@@ -9,7 +9,7 @@ login = root + '/api/auth/login/',
 
 tokenRefresh = root + '/api/auth/login/refresh/',
 
-register = root + '/api/auth/register/',
+register = root + '/api/auth/register/';
 
 
 function getAllComments(videoID){
