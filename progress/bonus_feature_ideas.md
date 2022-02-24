@@ -7,3 +7,4 @@
 -ability to favorite creators?(if subscription functionality doesn’t work with YouTube api)
 -user profile picture
 -floating back to top button
+-add show/hide password logic for FormField Component

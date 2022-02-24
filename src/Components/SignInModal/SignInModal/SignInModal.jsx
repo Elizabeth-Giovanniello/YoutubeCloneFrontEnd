@@ -2,7 +2,8 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { hide } from './signInSlice.js';
+import SignInForm from '../SignInForm/SignInForm.jsx';
+import { hide } from './SignInModalSlice.js';
 
 const SignInModal = props => {
 	const show = useSelector(state => state.displaySignInModal);
@@ -13,12 +14,16 @@ const SignInModal = props => {
 			<Modal.Header>
 				<Modal.Title>Sign into your Account</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>Form GOEs Here</Modal.Body>
+			<Modal.Body>
+				<SignInForm />
+			</Modal.Body>
 			<Modal.Footer>
 				<Button onClick={() => dispatch(hide())} variant='text'>
 					Cancel
 				</Button>
-				<Button variant='contained'>Sign In</Button>
+				<Button form='sign-in-form' type='submit' variant='contained'>
+					Sign In
+				</Button>
 			</Modal.Footer>
 		</Modal>
 	);

@@ -25,15 +25,15 @@ import { createSlice } from '@reduxjs/toolkit';
 // 	return { type: HIDE };
 // }
 
-export const signInslice = createSlice({
+export const signInModalSlice = createSlice({
 	name: 'displaySignInModal',
-	initialState: false,
+	initialState: true,
 	reducers: {
 		show: state => (state = true),
 		hide: state => (state = false),
 	},
 });
 
-export const { show, hide } = signInslice.actions;
+export const { show, hide } = signInModalSlice.actions;
 
-export default signInslice.reducer;
+export default signInModalSlice.reducer;
