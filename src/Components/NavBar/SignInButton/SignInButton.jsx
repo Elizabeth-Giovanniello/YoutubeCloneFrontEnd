@@ -1,12 +1,18 @@
-import { Button } from "@mui/material";
-import React from "react";
-// import { Button } from 'react-bootstrap';
+import { Button } from '@mui/material';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { show } from '../../SignInModal/SignInModal/signInSlice.js';
 
+const SignInButton = ({ variant = 'outlined' }) => {
+	const dispatch = useDispatch();
 
-const SignInButton = ({variant="outlined"}) => {
-    return ( 
-        <Button variant={variant}>Sign In</Button>
-     );
-}
- 
+	const handleClick = () => dispatch(show());
+
+	return (
+		<Button onClick={handleClick} variant={variant}>
+			Sign In
+		</Button>
+	);
+};
+
 export default SignInButton;
