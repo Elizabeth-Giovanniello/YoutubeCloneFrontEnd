@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FormField from '../../Common/FormField/FormField.jsx';
 import { hide } from '../SignInModal/SignInModalSlice.js';
+import { signIn } from './SignInFormSlice.js';
 
 const SignInForm = props => {
 	// STATE
@@ -18,9 +19,8 @@ const SignInForm = props => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		console.log('sign in form submitted');
-		dispatch(hide());
+		dispatch(signIn({ username, password }));
 		clearForm();
-		// dispatch the login action
 	};
 
 	const clearForm = () => {
