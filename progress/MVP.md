@@ -6,7 +6,7 @@
 
 <!-- (5 points): As a developer, I want to create a React app using Create React App. -->
 
-(5 points) As a developer, I want to use React.js best practices, which consists of creating function components and properly passing state around as props.
+<!-- (5 points) As a developer, I want to use React.js best practices, which consists of creating function components and properly passing state around as props. -->
 
 (7.5 points) As a developer, I want to use CSS appropriately to make an aesthetically pleasing application.
 

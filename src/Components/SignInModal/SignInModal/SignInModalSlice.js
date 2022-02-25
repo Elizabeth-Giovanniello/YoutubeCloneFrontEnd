@@ -33,7 +33,7 @@ export const closeSignIn = () => dispatch => {
 
 export const signInModalSlice = createSlice({
 	name: 'displaySignInModal',
-	initialState: false,
+	initialState: true,
 	reducers: {
 		showSignIn: state => (state = true),
 		hideSignIn: state => (state = false),
