@@ -4,11 +4,12 @@ import { Film } from 'react-bootstrap-icons';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import SignInButton from '../SignInButton/SignInButton';
 import { useSelector } from 'react-redux';
+import LogoutButton from '../LogOutBtn/LogOutBtn.jsx';
 
 const NavBar = props => {
 	const currentUser = useSelector(state => state.user);
 
-	const userDisplay = currentUser.user_id ? <div>logout?</div> : <SignInButton />;
+	const userDisplay = currentUser.user_id ? <LogoutButton /> : <SignInButton />;
 
 	return (
 		<Navbar sticky='top' bg='dark' variant='dark'>

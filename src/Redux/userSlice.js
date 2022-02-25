@@ -7,6 +7,7 @@ import { closeSignIn } from '../Components/SignInModal/SignInModal/SignInModalSl
 
 import apiPaths from '../Constants/apiPaths.js';
 
+const setToken = (value = '') => window.localStorage.setItem('token', value);
 const DEFAULT_USER_STATE = { user_id: null, token: '' };
 
 // THUNKS
@@ -17,23 +18,31 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 		const token = response.data.access;
 		const user_id = jwtDecode(token).user_id;
 
-		window.localStorage.setItem('token', token);
+		setToken(token);
 		thunkAPI.dispatch(setUser({ user_id, token }));
 		thunkAPI.dispatch(closeSignIn());
 	} catch {
 		thunkAPI.dispatch(setError('Username or password is incorrect.'));
-		window.localStorage.setItem('token', '');
-		thunkAPI.dispatch(setUser(DEFAULT_USER_STATE));
+		setToken();
+		thunkAPI.dispatch(clearUser());
 	}
 });
+
+export const logout = () => dispatch => {
+	dispatch(clearUser);
+};
 
 const userSlice = createSlice({
 	name: 'user',
 	initialState: DEFAULT_USER_STATE,
 	reducers: {
 		setUser: (state, action) => (state = action.payload),
+		clearUser: state => {
+			setToken();
+			return (state = DEFAULT_USER_STATE);
+		},
 	},
 });
 
-export const { setUser, setToken } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 export const user = userSlice.reducer;
