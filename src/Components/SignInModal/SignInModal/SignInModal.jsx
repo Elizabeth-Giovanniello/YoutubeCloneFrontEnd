@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SignInForm from '../SignInForm/SignInForm.jsx';
-import { hide } from './SignInModalSlice.js';
+import { hideSignIn } from './SignInModalSlice.js';
 
 const SignInModal = props => {
 	const show = useSelector(state => state.displaySignInModal);
@@ -18,7 +18,7 @@ const SignInModal = props => {
 				<SignInForm />
 			</Modal.Body>
 			<Modal.Footer>
-				<Button onClick={() => dispatch(hide())} variant='text'>
+				<Button onClick={() => dispatch(hideSignIn())} variant='text'>
 					Cancel
 				</Button>
 				<Button form='sign-in-form' type='submit' variant='contained'>

@@ -29,11 +29,11 @@ export const signInModalSlice = createSlice({
 	name: 'displaySignInModal',
 	initialState: true,
 	reducers: {
-		show: state => (state = true),
-		hide: state => (state = false),
+		showSignIn: state => (state = true),
+		hideSignIn: state => (state = false),
 	},
 });
 
-export const { show, hide } = signInModalSlice.actions;
+export const { showSignIn, hideSignIn } = signInModalSlice.actions;
 
 export default signInModalSlice.reducer;

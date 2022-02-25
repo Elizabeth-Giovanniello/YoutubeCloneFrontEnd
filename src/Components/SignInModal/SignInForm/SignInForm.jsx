@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FormField from '../../Common/FormField/FormField.jsx';
-import { hide } from '../SignInModal/SignInModalSlice.js';
-import { signIn, setUsername, setPassword } from './SignInFormSlice.js';
+import { hideSignIn } from '../SignInModal/SignInModalSlice.js';
+import { signIn, setUsername, setPassword, clearForm } from './SignInFormSlice.js';
 
 const SignInForm = props => {
 	// STATE
@@ -19,13 +19,9 @@ const SignInForm = props => {
 		e.preventDefault();
 		console.log('sign in form submitted');
 		dispatch(signIn({ username, password }));
-		clearForm();
+		dispatch(clearForm());
 	};
 
-	const clearForm = () => {
-		setUsername('');
-		setPassword('');
-	};
 
 	return (
 		<form onSubmit={handleSubmit} id='sign-in-form'>

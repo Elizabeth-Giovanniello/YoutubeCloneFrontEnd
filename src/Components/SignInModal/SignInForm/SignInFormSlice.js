@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import apiPaths from '../../../Constants/apiPaths.js';
+import { hideSignIn } from '../SignInModal/SignInModalSlice.js';
 
 
 const signInFormSlice = createSlice({
@@ -9,7 +10,8 @@ const signInFormSlice = createSlice({
 	initialState: { username: "", password: "", error: ""},
 	reducers: { setUsername: (state, action) => {state.username = action.payload}, 
 	setPassword: (state, action) => {state.password = action.payload},
-	setError: (state, action) => {state.error = action.payload}
+	setError: (state, action) => {state.error = action.payload},
+	clearForm: (state) => {state.password = ""; state.username = ""; state.error = ""}
 	}
 });
 
@@ -24,6 +26,10 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 		const response = await axios.post(apiPaths.login, formData);
 
 		thunkAPI.dispatch(signInFormSlice.actions.setError(""))
+
+		thunkAPI.dispatch(signInFormSlice.actions.clearForm());
+
+		thunkAPI.dispatch(hideSignIn());
 	
 		window.localStorage.setItem('token', response.data.access);
 		const user_id = jwtDecode(response.data.access).user_id;
@@ -57,7 +63,7 @@ const userSlice = createSlice({
 	},
 });
 
-export const { setUsername, setPassword, setError } = signInFormSlice.actions;
+export const { setUsername, setPassword, setError, clearForm } = signInFormSlice.actions;
 export const user = userSlice.reducer;
 export const signInForm = signInFormSlice.reducer;
 
