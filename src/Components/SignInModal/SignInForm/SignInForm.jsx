@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FormField from '../../Common/FormField/FormField.jsx';
 import { hide } from '../SignInModal/SignInModalSlice.js';
-import { signIn } from './SignInFormSlice.js';
+import { signIn, setUsername, setPassword } from './SignInFormSlice.js';
 
 const SignInForm = props => {
 	// STATE
+
+	const {username, password, error} = useSelector((state) => state.signInForm);
+
 	const dispatch = useDispatch();
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
-	// TODO: setup error handling
-	const [error, setError] = useState('');
 
 	// HANDLERS
-	const handleUsername = e => setUsername(e.target.value);
-	const handlePassword = e => setPassword(e.target.value);
+	const handleUsername = e => dispatch(setUsername(e.target.value));
+	const handlePassword = e => dispatch(setPassword(e.target.value));
 
 	const handleSubmit = e => {
 		e.preventDefault();

@@ -3,18 +3,44 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import apiPaths from '../../../Constants/apiPaths.js';
 
+
+const signInFormSlice = createSlice({
+	name: 'signInForm',
+	initialState: { username: "", password: "", error: ""},
+	reducers: { setUsername: (state, action) => {state.username = action.payload}, 
+	setPassword: (state, action) => {state.password = action.payload},
+	setError: (state, action) => {state.error = action.payload}
+	}
+});
+
+
+
 // TYPES
 const SIGN_IN = 'user/signIn';
 
 // THUNKS
-export const signIn = createAsyncThunk(SIGN_IN, async formData => {
-	const response = await axios.post(apiPaths.login, formData);
-	window.localStorage.setItem('token', response.data.access);
-	const user_id = jwtDecode(response.data.access).user_id;
-	return user_id;
+export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
+	try{
+		const response = await axios.post(apiPaths.login, formData);
+
+		thunkAPI.dispatch(signInFormSlice.actions.setError(""))
+	
+		window.localStorage.setItem('token', response.data.access);
+		const user_id = jwtDecode(response.data.access).user_id;
+		return user_id;
+	}
+	catch{
+		thunkAPI.dispatch(signInFormSlice.actions.setError("Username or password is incorrect."))
+		window.localStorage.setItem('token', '');
+		return null;
+	}
+	
+	
 });
 
-const signInFormSlice = createSlice({
+
+
+const userSlice = createSlice({
 	name: 'user',
 	initialState: { user_id: null },
 	reducers: {
@@ -24,9 +50,14 @@ const signInFormSlice = createSlice({
 		builder.addCase(signIn.fulfilled, (state, action) => {
 			state.user_id = action.payload;
 		});
+		builder.addCase(signIn.rejected, (state, action) => {
+			state.user_id = null;
+			window.localStorage.setItem('token', "");
+		})
 	},
 });
 
-// export const { signIn } = signInFormSlice.actions;
+export const { setUsername, setPassword, setError } = signInFormSlice.actions;
+export const user = userSlice.reducer;
+export const signInForm = signInFormSlice.reducer;
 
-export default signInFormSlice.reducer;
