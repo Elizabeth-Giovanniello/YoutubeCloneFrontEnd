@@ -7,7 +7,7 @@ import { signIn, setUsername, setPassword, clearForm } from './SignInFormSlice.j
 const SignInForm = props => {
 	// STATE
 
-	const {username, password, error} = useSelector((state) => state.signInForm);
+	const { username, password, error } = useSelector(state => state.signInForm);
 
 	const dispatch = useDispatch();
 
@@ -17,11 +17,8 @@ const SignInForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log('sign in form submitted');
 		dispatch(signIn({ username, password }));
-		dispatch(clearForm());
 	};
-
 
 	return (
 		<form onSubmit={handleSubmit} id='sign-in-form'>
