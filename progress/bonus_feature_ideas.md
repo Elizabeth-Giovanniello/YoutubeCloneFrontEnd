@@ -8,3 +8,6 @@
 -user profile picture
 -floating back to top button
 -add show/hide password logic for FormField Component
+
+- responsive design
+  - signin btn change to icon on mobile

@@ -3,13 +3,13 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SignInForm from '../SignInForm/SignInForm.jsx';
-import { closeSignIn, hideSignIn } from './SignInModalSlice.js';
+import { closeSignIn } from './SignInModalSlice.js';
 
 const SignInModal = props => {
 	const show = useSelector(state => state.displaySignInModal);
 	const dispatch = useDispatch();
 
-	function handleHide(){
+	function handleHide() {
 		dispatch(closeSignIn());
 	}
 

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import displaySignInModal from '../Components/SignInModal/SignInModal/SignInModalSlice.js';
-import { user, signInForm } from '../Components/SignInModal/SignInForm/SignInFormSlice.js';
+import { signInForm } from '../Components/SignInModal/SignInForm/SignInFormSlice.js';
+import { user } from './userSlice.js';
 
 export const store = configureStore({ reducer: { displaySignInModal, user, signInForm } });

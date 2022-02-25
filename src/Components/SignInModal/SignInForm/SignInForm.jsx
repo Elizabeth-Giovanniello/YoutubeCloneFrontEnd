@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FormField from '../../Common/FormField/FormField.jsx';
-import { hideSignIn } from '../SignInModal/SignInModalSlice.js';
-import { signIn, setUsername, setPassword, clearForm } from './SignInFormSlice.js';
+import { setUsername, setPassword } from './SignInFormSlice.js';
+import { signIn } from '../../../Redux/userSlice.js';
 
 const SignInForm = props => {
 	// STATE
-
 	const { username, password, error } = useSelector(state => state.signInForm);
-
 	const dispatch = useDispatch();
 
 	// HANDLERS

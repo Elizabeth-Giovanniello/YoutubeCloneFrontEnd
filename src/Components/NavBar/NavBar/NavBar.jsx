@@ -1,22 +1,26 @@
-import React from "react";
+import React from 'react';
 import { Navbar, Button, Container } from 'react-bootstrap';
 import { Film } from 'react-bootstrap-icons';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-import SignInButton from "../SignInButton/SignInButton";
+import SignInButton from '../SignInButton/SignInButton';
+import { useSelector } from 'react-redux';
 
-const NavBar = (props) => {
+const NavBar = props => {
+	const currentUser = useSelector(state => state.user);
 
-    return ( 
-        <Navbar sticky="top" bg="dark" variant="dark">
-            <Container fluid>
-                <Navbar.Brand>
-                    <Film size={35}/>{' WeTube'}
-                </Navbar.Brand>
-                <SignInButton/>
-            </Container>
-        </Navbar>
+	const userDisplay = currentUser.user_id ? <div>logout?</div> : <SignInButton />;
 
-    );
-}
- 
+	return (
+		<Navbar sticky='top' bg='dark' variant='dark'>
+			<Container fluid className='text-white'>
+				<Navbar.Brand>
+					<Film size={35} />
+					{' WeTube'}
+				</Navbar.Brand>
+				{userDisplay}
+			</Container>
+		</Navbar>
+	);
+};
+
 export default NavBar;
