@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import apiPaths from '../../../Constants/apiPaths.js';
-import { hideSignIn } from '../SignInModal/SignInModalSlice.js';
+import { closeSignIn, hideSignIn } from '../SignInModal/SignInModalSlice.js';
 
 
 const signInFormSlice = createSlice({
@@ -27,9 +27,7 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 
 		thunkAPI.dispatch(signInFormSlice.actions.setError(""))
 
-		thunkAPI.dispatch(signInFormSlice.actions.clearForm());
-
-		thunkAPI.dispatch(hideSignIn());
+		thunkAPI.dispatch(closeSignIn());
 	
 		window.localStorage.setItem('token', response.data.access);
 		const user_id = jwtDecode(response.data.access).user_id;

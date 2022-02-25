@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { clearForm } from '../SignInForm/SignInFormSlice';
 
 // // TYPES
 // const SHOW = 'signInModal/show';
@@ -25,6 +26,15 @@ import { createSlice } from '@reduxjs/toolkit';
 // 	return { type: HIDE };
 // }
 
+const CLOSE = 'signInModal/close'
+
+export const closeSignIn = () => (dispatch) => {
+	dispatch(hideSignIn());
+	dispatch(clearForm());
+}
+
+
+
 export const signInModalSlice = createSlice({
 	name: 'displaySignInModal',
 	initialState: true,
@@ -33,6 +43,7 @@ export const signInModalSlice = createSlice({
 		hideSignIn: state => (state = false),
 	},
 });
+
 
 export const { showSignIn, hideSignIn } = signInModalSlice.actions;
 
