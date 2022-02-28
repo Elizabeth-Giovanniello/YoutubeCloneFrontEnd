@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { clearForm } from '../SignInForm/SignInFormSlice';
+import { clearSignInForm } from '../SignInForm/SignInFormSlice';
 
 // // TYPES
 // const SHOW = 'signInModal/show';
@@ -28,12 +28,12 @@ import { clearForm } from '../SignInForm/SignInFormSlice';
 
 export const closeSignIn = () => dispatch => {
 	dispatch(hideSignIn());
-	dispatch(clearForm());
+	dispatch(clearSignInForm());
 };
 
 export const signInModalSlice = createSlice({
 	name: 'displaySignInModal',
-	initialState: true,
+	initialState: false,
 	reducers: {
 		showSignIn: state => (state = true),
 		hideSignIn: state => (state = false),

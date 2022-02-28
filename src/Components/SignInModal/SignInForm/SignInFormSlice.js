@@ -13,7 +13,7 @@ const signInFormSlice = createSlice({
 		setError: (state, action) => {
 			state.error = action.payload;
 		},
-		clearForm: state => {
+		clearSignInForm: state => {
 			state.password = '';
 			state.username = '';
 			state.error = '';
@@ -21,5 +21,5 @@ const signInFormSlice = createSlice({
 	},
 });
 
-export const { setUsername, setPassword, setError, clearForm } = signInFormSlice.actions;
+export const { setUsername, setPassword, setError, clearSignInForm } = signInFormSlice.actions;
 export const signInForm = signInFormSlice.reducer;
