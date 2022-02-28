@@ -3,6 +3,7 @@ const VideoPlayer = props => {
 	return (
 		<div className='video-wrapper'>
 			<iframe
+				className='video-player'
 				allowFullScreen
 				title='title'
 				id='ytplayer'
