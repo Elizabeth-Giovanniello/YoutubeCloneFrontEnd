@@ -10,7 +10,7 @@ const VideoPlayer = ({ fullscreen }) => {
 				id='ytplayer'
 				type='text/html'
 				src='https://www.youtube.com/embed/M7lc1UVf-VE?origin=http://example.com'
-				frameborder='0'></iframe>
+				frameBorder='0'></iframe>
 		</div>
 	);
 };
