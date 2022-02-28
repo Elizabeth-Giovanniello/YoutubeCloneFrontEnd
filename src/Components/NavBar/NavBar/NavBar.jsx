@@ -5,6 +5,7 @@ import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import SignInButton from '../../Common/SignInButton/SignInButton';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../LogOutBtn/LogOutBtn.jsx';
+import SearchBar from '../SearchBar/SearchBar.jsx';
 
 const NavBar = props => {
 	const currentUser = useSelector(state => state.user);
@@ -18,6 +19,7 @@ const NavBar = props => {
 					<Film size={35} />
 					{' WeTube'}
 				</Navbar.Brand>
+				<SearchBar />
 				{userDisplay}
 			</Container>
 		</Navbar>
