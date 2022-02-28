@@ -7,7 +7,7 @@ import { setUser } from './Redux/userSlice.js';
 import jwtDecode from 'jwt-decode';
 import SignUpModal from './Components/SignUpModal/SignUpModal.jsx';
 import { Routes, Route } from 'react-router-dom';
-import Home from './Components/Home/Home';
+import Home from './Components/Home/Home/Home';
 import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPage from './Components/VideoPage/VideoPage/VideoPage.jsx';
 
