@@ -8,6 +8,10 @@ import { setUser } from './Redux/userSlice.js';
 import jwtDecode from 'jwt-decode';
 import SignUpModal from './Components/SignUpModal/SignUpModal.jsx';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Components/Home/Home';
+import SearchResults from './Components/SearchResults/SearchResults';
+import VideoPage from './Components/VideoPage/VideoPage';
 
 function App() {
 	const dispatch = useDispatch();
@@ -24,7 +28,11 @@ function App() {
 			<SignInModal />
 			<SignUpModal />
 			<NavBar />
-      <VideoPlayer/>
+      <Routes>
+        <Route exact path ="/" element={<Home/>}/>
+        <Route path ="search" element={<SearchResults/>}/>
+        <Route path ="video" element={<VideoPage/>}/>
+      </Routes>
 		</div>
 	);
 }
