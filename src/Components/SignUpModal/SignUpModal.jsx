@@ -22,7 +22,7 @@ const SignUpModal = props => {
 		title: 'Create new account',
 		titleBtn: <SignInButton variant="text"/>,
 		form: <SignUpForm/>,
-		submitBtn: <SubmitBtn formId='sign-up-form' />,
+		submitBtn: <SubmitBtn formId='sign-up-form' title="Sign Up" />,
 		show: show,
 		hide: handleHide,
 	};

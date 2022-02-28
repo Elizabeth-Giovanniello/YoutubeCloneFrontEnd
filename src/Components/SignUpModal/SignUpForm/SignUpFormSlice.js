@@ -6,12 +6,8 @@ const signUpFormSlice = createSlice({
 	name: 'signInForm',
 	initialState: INITIAL_STATE,
 	reducers: {
-        setForm: (state, action) => {
-            state = {...state, ...action.payload}
-        },
-		clearSignUpForm: state => {
-			state = INITIAL_STATE
-		},
+        setForm: (state, action) => state = {...state, ...action.payload},
+		clearSignUpForm: state => state = INITIAL_STATE,
 	},
 });
 

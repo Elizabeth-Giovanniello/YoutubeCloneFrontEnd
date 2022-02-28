@@ -1,10 +1,10 @@
 import { Button } from '@mui/material';
 import React from 'react';
 
-const SubmitBtn = ({ formId }) => {
+const SubmitBtn = ({ formId, title }) => {
 	return (
 		<Button form={formId} type='submit' variant='contained'>
-			Sign In
+			{title}
 		</Button>
 	);
 };

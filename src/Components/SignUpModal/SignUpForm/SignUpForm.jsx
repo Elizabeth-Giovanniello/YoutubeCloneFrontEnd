@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { signUp } from '../../../Redux/userSlice.js';
 import FormField from '../../Common/FormField/FormField.jsx';
 import { setForm } from './SignUpFormSlice.js';
 
 const SignUpForm = props => {
 	// STATE
-	const {first_name, last_name, email, username, password, confirmPassword, error } = useSelector(state => state.signUpForm);
+    const signUpForm = useSelector(state => state.signUpForm);
+	const {first_name, last_name, email, username, password, confirmPassword, error } = signUpForm
 	const dispatch = useDispatch();
 
 	// HANDLERS
@@ -14,11 +16,11 @@ const SignUpForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// dispatch(signIn({ username, password }));
+        dispatch(signUp(signUpForm));
 	};
 
 	return (
-		<form onSubmit={handleSubmit} id='sign-in-form'>
+		<form onSubmit={handleSubmit} id='sign-up-form'>
 			<FormField name="username" label='Username' value={username} onChange={handleChange} />
 			<FormField name="password" type='password' label='Password' value={password} onChange={handleChange} />
 			<FormField name="confirmPassword" type='password' label='Confirm Password' value={confirmPassword} onChange={handleChange} />

@@ -18,7 +18,7 @@ const SignInModal = props => {
 		title: 'Sign in to your account',
 		titleBtn: <SignUpBtn />,
 		form: <SignInForm />,
-		submitBtn: <SubmitBtn formId='sign-in-form' />,
+		submitBtn: <SubmitBtn formId='sign-in-form' title="Sign In" />,
 		show,
 		hide: handleHide,
 	};

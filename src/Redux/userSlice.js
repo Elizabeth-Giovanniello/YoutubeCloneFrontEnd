@@ -6,6 +6,7 @@ import { setError } from '../Components/SignInModal/SignInForm/SignInFormSlice.j
 import { closeSignIn } from '../Components/SignInModal/SignInModal/SignInModalSlice.js';
 
 import apiPaths from '../Constants/apiPaths.js';
+import { closeSignUp } from '../Components/SignUpModal/SignUpModalSlice.js';
 
 const setToken = (value = '') => window.localStorage.setItem('token', value);
 const DEFAULT_USER_STATE = { user_id: null, token: '' };
@@ -28,6 +29,21 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 	}
 });
 
+const SIGN_UP = 'user/signUp';
+export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
+	try {
+		const response = await axios.post(apiPaths.register, formData);
+		thunkAPI.dispatch(signIn(formData));
+		thunkAPI.dispatch(closeSignUp());
+		console.log("User creation: success");
+	} catch (error) {
+		console.log(error);
+	}
+})
+
+
+
+
 export const logout = () => dispatch => {
 	dispatch(clearUser);
 };
@@ -44,5 +60,7 @@ const userSlice = createSlice({
 	},
 });
 
+
 export const { setUser, clearUser } = userSlice.actions;
 export const user = userSlice.reducer;
+
