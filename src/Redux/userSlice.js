@@ -35,15 +35,12 @@ export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 		const response = await axios.post(apiPaths.register, formData);
 		thunkAPI.dispatch(signIn(formData));
 		thunkAPI.dispatch(closeSignUp());
-		console.log("User creation: success");
+		console.log('User creation: success');
 	} catch (error) {
 		//TODO: implement error handling
 		console.log(error);
 	}
-})
-
-
-
+});
 
 export const logout = () => dispatch => {
 	dispatch(clearUser);
@@ -61,7 +58,5 @@ const userSlice = createSlice({
 	},
 });
 
-
 export const { setUser, clearUser } = userSlice.actions;
 export const user = userSlice.reducer;
-
