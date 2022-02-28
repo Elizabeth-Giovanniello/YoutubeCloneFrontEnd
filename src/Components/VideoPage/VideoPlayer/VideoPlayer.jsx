@@ -1,15 +1,14 @@
 import './VideoPlayer.css';
-const VideoPlayer = props => {
+const VideoPlayer = ({ fullscreen }) => {
+	const variant = fullscreen ? 'video-wrapper' : 'video-wrapper-sm';
 	return (
-		<div className='video-wrapper'>
+		<div className={variant}>
 			<iframe
 				className='video-player'
 				allowFullScreen
 				title='title'
 				id='ytplayer'
 				type='text/html'
-				width='640'
-				height='360'
 				src='https://www.youtube.com/embed/M7lc1UVf-VE?origin=http://example.com'
 				frameborder='0'></iframe>
 		</div>
