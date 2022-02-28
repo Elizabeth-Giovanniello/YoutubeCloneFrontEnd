@@ -3,5 +3,6 @@ import displaySignInModal from '../Components/SignInModal/SignInModal/SignInModa
 import { signInForm } from '../Components/SignInModal/SignInForm/SignInFormSlice.js';
 import { user } from './userSlice.js';
 import { signUpForm } from '../Components/SignUpModal/SignUpForm/SignUpFormSlice.js';
+import displaySignUpModal from '../Components/SignUpModal/SignUpModalSlice.js';
 
-export const store = configureStore({ reducer: { displaySignInModal, user, signInForm, signUpForm } });
+export const store = configureStore({ reducer: { displaySignInModal, user, signInForm, displaySignUpModal, signUpForm } });

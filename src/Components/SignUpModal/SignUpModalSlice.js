@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { clearSignUpForm } from './SignUpForm/SignUpFormSlice';
 
 
 
 export const closeSignUp = () => dispatch => {
 	dispatch(hideSignUp());
-	dispatch(clearForm());
+	dispatch(clearSignUpForm());
 };
 
 export const signUpModalSlice = createSlice({
 	name: 'displaySignUpModal',
-	initialState: true,
+	initialState: false,
 	reducers: {
 		showSignUp: state => (state = true),
 		hideSignUp: state => (state = false),
 	},
 });
 
-export const { showSignIn, hideSignIn } = signUpModalSlice.actions;
+export const { showSignUp, hideSignUp } = signUpModalSlice.actions;
 
 export default signUpModalSlice.reducer;
