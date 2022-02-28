@@ -1,6 +1,6 @@
 <!-- (5 points): As a developer, I want to make good, consistent commits (at least 25 for the entire team for both the backend and frontend). You will create two repositories on GitHub – one for the frontend, and one for the backend -->
 
-(15 points) As a user, I want to be able to register, login, and logout of my account.
+<!-- (15 points) As a user, I want to be able to register, login, and logout of my account. -->
 
 <!-- (5 points): As a web designer, I want to create a wireframe for my application -->
 

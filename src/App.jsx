@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from './Redux/userSlice.js';
 import jwtDecode from 'jwt-decode';
 import SignUpModal from './Components/SignUpModal/SignUpModal.jsx';
+import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 
 function App() {
 	const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
 			<SignInModal />
 			<SignUpModal />
 			<NavBar />
+      <VideoPlayer/>
 		</div>
 	);
 }

@@ -19,6 +19,9 @@ const SignUpForm = props => {
         dispatch(signUp(signUpForm));
 	};
 
+
+    //TODO: implement error handling for registration form
+
 	return (
 		<form onSubmit={handleSubmit} id='sign-up-form'>
 			<FormField name="username" label='Username' value={username} onChange={handleChange} />

@@ -37,6 +37,7 @@ export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 		thunkAPI.dispatch(closeSignUp());
 		console.log("User creation: success");
 	} catch (error) {
+		//TODO: implement error handling
 		console.log(error);
 	}
 })
