@@ -7,15 +7,13 @@ import { youtubeSearchPath } from '../../../Constants/youtubePaths.js';
 
 // THUNK
 const HOME = 'home/populate';
-export const populateVideos = createAsyncThunk(HOME, async (thunkAPI) => {
-    
+export const populateVideos = createAsyncThunk(HOME, async (_, thunkAPI) => {
+
 	try {
-		const popular = await axios.get(youtubeSearchPath("popular"));
-		const news = await axios.get(youtubeSearchPath("news"));
-		const trending = await axios.get(youtubeSearchPath("trending"));
-		thunkAPI.dispatch(setTrending(trending.data.items));
-		thunkAPI.dispatch(setNews(news.data.items));
-		thunkAPI.dispatch(setPopular(popular.data.items));
+		const popular = await axios.get(youtubeSearchPath("popular")).then((res) => res.data.items);
+		const news = await axios.get(youtubeSearchPath("news")).then((res) => res.data.items);
+		const trending = await axios.get(youtubeSearchPath("trending")).then((res) => res.data.items);
+        thunkAPI.dispatch(setHome({ trending, news, popular }));
 
 	} catch (error) {
 		console.log(error);
@@ -28,17 +26,9 @@ const homeSlice = createSlice({
 	name: 'home',
 	initialState: INITAL_STATE,
 	reducers: {
-		setTrending: (state, action) => {
-			state = action.payload;
-		},
-        setNews: (state, action) => {
-            state = action.payload;
-        },
-		setPopular: (state, action) => {
-			state = action.payload;
-		},
+        setHome: (state, action) => state = action.payload,
 	},
 });
 
-export const { setTrending, setNews, setPopular } = homeSlice.actions;
+export const { setHome } = homeSlice.actions;
 export const home = homeSlice.reducer;

@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoPanel from '../VideoPanel/VideoPanel';
 import { useDispatch } from 'react-redux';
+import { populateVideos } from '../Home/HomeSlice';
 
 const DisplayVideos = (props) => {
 
