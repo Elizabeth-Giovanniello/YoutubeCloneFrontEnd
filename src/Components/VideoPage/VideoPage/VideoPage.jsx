@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import CommentForm from '../CommentForm/CommentForm.jsx';
+import RelatedVideos from '../RelatedVideos/RelatedVideos.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import { getRelatedVideos } from './VideoSlice.js';
 
 const VideoPage = props => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getRelatedVideos());
+	}, []);
+
 	return (
 		<>
 			<VideoPlayer fullscreen />
@@ -16,6 +25,7 @@ const VideoPage = props => {
 						<div className='m-5 p-5'>EXTENDER</div>
 					</Col>
 					<Col>
+						<RelatedVideos />
 						<div>Video Card</div>
 						<div>Video Card</div>
 						<div>Video Card</div>

@@ -11,6 +11,5 @@ const apiHeader = '?key=' + YOUTUBE_API_KEY,
 export const youtubeSearchPath = searchTerm =>
 	`${ROOT}${apiHeader}${typeHeader}&q=${searchTerm}${partHeader}${maxResults}${MAX_RESULTS}`;
 
-function getRelatedVideos(videoID) {
-	return `${ROOT}${apiHeader}&relatedToVideoId=${videoID}${typeHeader}${partHeader}`;
-}
+export const youtubeRelatedVideosPath = videoID =>
+	`${ROOT}${apiHeader}&relatedToVideoId=${videoID}${typeHeader}${partHeader}${maxResults}${MAX_RESULTS}`;
