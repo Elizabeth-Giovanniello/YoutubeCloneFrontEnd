@@ -5,7 +5,8 @@ import { signInForm } from '../Components/SignInModal/SignInForm/SignInFormSlice
 import displaySignUpModal from '../Components/SignUpModal/SignUpModalSlice.js';
 import { signUpForm } from '../Components/SignUpModal/SignUpForm/SignUpFormSlice.js';
 import { search } from '../Components/NavBar/SearchBar/SearchSlice.js';
+import { video } from '../Components/VideoPage/VideoPage/VideoSlice.js';
 
 export const store = configureStore({
-	reducer: { displaySignInModal, user, signInForm, displaySignUpModal, signUpForm, search },
+	reducer: { displaySignInModal, user, signInForm, displaySignUpModal, signUpForm, search, video },
 });
