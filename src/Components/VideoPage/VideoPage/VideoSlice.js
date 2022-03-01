@@ -43,7 +43,7 @@ export const videoSlice = createSlice({
 			const { id, snippet } = action.payload;
 			const { videoId } = id;
 			const { title, description, publishedAt } = snippet;
-
+			localStorage.setItem('videoId', videoId);
 			return (state = { ...state, videoId, title, description, publishedAt });
 		},
 

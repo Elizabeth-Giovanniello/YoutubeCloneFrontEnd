@@ -16,9 +16,9 @@ const VideoCardHorizontal = props => {
 	}
 
 	return (
-		<Row className='mb-3 video-card'>
+		<Row className='mb-3'>
 			<Col>
-				<Card onClick={handleVideoSelect}>
+				<Card onClick={handleVideoSelect} className='clickable'>
 					<Row className='g-0'>
 						<Col xs={6} sm={5} md={4} className='thumb'>
 							<Card.Img src={props.video.snippet.thumbnails.high.url} />

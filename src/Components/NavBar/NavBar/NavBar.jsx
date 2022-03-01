@@ -19,7 +19,7 @@ const NavBar = props => {
 		<Navbar sticky='top' bg='dark' variant='dark'>
 			<Container fluid className='text-white'>
 				<Navbar.Brand
-					className='video-card'
+					className='clickable'
 					onClick={() => {
 						navigate(HOME);
 					}}>
