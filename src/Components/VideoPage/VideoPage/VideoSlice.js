@@ -11,7 +11,13 @@ export const videoSlice = createSlice({
 	name: 'video',
 	initialState,
 	reducers: {
-		setCurrentVideo: (state, action) => (state = action.payload),
+		setCurrentVideo: (state, action) => {
+			const { id, snippet } = action.payload;
+			const { videoId } = id;
+			const { title, description, publishedAt } = snippet;
+
+			return (state = { videoId, title, description, publishedAt });
+		},
 	},
 });
 
