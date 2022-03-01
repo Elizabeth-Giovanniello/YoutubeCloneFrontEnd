@@ -1,5 +1,4 @@
 import NavBar from './Components/NavBar/NavBar/NavBar.jsx';
-import './App.css';
 import SignInModal from './Components/SignInModal/SignInModal/SignInModal.jsx';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -11,6 +10,8 @@ import Home from './Components/Home/Home/Home';
 import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPage from './Components/VideoPage/VideoPage/VideoPage.jsx';
 import { HOME, SEARCH, VIDEO } from './Constants/routes.js';
+
+import './App.css';
 
 function App() {
 	const dispatch = useDispatch();
