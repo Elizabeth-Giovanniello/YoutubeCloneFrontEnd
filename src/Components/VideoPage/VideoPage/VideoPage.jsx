@@ -29,8 +29,9 @@ const VideoPage = props => {
 					<Col xs={8}>
 						<TitleBar />
 						<CommentForm />
-						<div className='m-5 p-5'>EXTENDER</div>
 						<SingleComment />
+						<SingleComment/>
+						<SingleComment/>
 					</Col>
 					<Col xs={4}>
 						<RelatedVideos />
