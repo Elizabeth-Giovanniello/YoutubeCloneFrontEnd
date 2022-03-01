@@ -10,11 +10,11 @@
 
 (7.5 points) As a developer, I want to use CSS appropriately to make an aesthetically pleasing application.
 
-(10 points) As a developer, I want to use Axios to make GET requests to the YouTube API to pull in video data.
+<!-- (10 points) As a developer, I want to use Axios to make GET requests to the YouTube API to pull in video data. -->
 
 (5 points) As a user, I want to be able to search for YouTube videos and see a video related to my search populate my embedded video player. (API CALL #1)
 
-(5 points) As a user, I want to be able to play a YouTube video in the embedded video player ( iframe tag).
+<!-- (5 points) As a user, I want to be able to play a YouTube video in the embedded video player ( iframe tag). -->
 
 (5 points) As a user, I want to see the title and description of the currently playing video.
 

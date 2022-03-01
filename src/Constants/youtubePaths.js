@@ -13,3 +13,6 @@ export const youtubeSearchPath = searchTerm =>
 
 export const youtubeRelatedVideosPath = videoID =>
 	`${ROOT}${apiHeader}&relatedToVideoId=${videoID}${typeHeader}${partHeader}${maxResults}${MAX_RESULTS}`;
+
+export const youtubeVideoSnippetPath = videoID =>
+	`https://www.googleapis.com/youtube/v3/videos${apiHeader}&id=${videoID}&part=snippet&part=statistics`;

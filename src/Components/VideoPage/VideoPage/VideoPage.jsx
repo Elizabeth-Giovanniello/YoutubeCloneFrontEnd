@@ -5,12 +5,13 @@ import CommentForm from '../CommentForm/CommentForm.jsx';
 import RelatedVideos from '../RelatedVideos/RelatedVideos.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import { getRelatedVideos } from './VideoSlice.js';
+import { getRelatedVideos, getSnippet } from './VideoSlice.js';
 
 const VideoPage = props => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(getSnippet());
 		dispatch(getRelatedVideos());
 	}, []);
 
