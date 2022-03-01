@@ -4,6 +4,7 @@ import { Card, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setCurrentVideo } from '../../VideoPage/VideoPage/VideoSlice';
 import { VIDEO } from '../../../Constants/routes';
+import './VideoCard.css'
 
 const VideoCard = (props) => {
 
@@ -16,13 +17,15 @@ const VideoCard = (props) => {
     }
 
     return ( 
-        <Col>
+        <Col xs={6} sm={5} md={4} lg={3} xl={2}>
             <Card onClick={handleVideoSelect}>
-                <Card.Img variant="top" src={props.video.snippet.thumbnails.high.url}/>
+                <div className="thumb">
+                    <Card.Img variant="top" src={props.video.snippet.thumbnails.high.url}/>
+                </div>
                 <Card.Body>
                 <Card.Title>{props.video.snippet.title}</Card.Title>
                 <Card.Text>
-                    {props.video.snippet.description}
+                    <small>{props.video.snippet.channelTitle}</small>
                 </Card.Text>
                 </Card.Body>
             </Card>

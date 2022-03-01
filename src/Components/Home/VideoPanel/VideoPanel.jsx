@@ -10,7 +10,7 @@ const VideoPanel = props => {
 			<h3>{props.title}</h3>
 			<Row>
 				{props.videos.map(function (video) {
-					return <VideoCard video={video} />;
+					return <VideoCard video={video} key={video.id.videoId}/>;
 				})}
 			</Row>
 		</Container>
