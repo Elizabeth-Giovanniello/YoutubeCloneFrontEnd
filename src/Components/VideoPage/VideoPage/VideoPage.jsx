@@ -25,13 +25,8 @@ const VideoPage = props => {
 						<CommentForm />
 						<div className='m-5 p-5'>EXTENDER</div>
 					</Col>
-					<Col>
+					<Col xs={4}>
 						<RelatedVideos />
-						<div>Video Card</div>
-						<div>Video Card</div>
-						<div>Video Card</div>
-						<div>Video Card</div>
-						<div>Video Card</div>
 					</Col>
 				</Row>
 			</Container>

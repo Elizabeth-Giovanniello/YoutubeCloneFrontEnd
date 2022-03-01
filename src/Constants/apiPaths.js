@@ -1,45 +1,28 @@
 const root = 'http://127.0.0.1:8000';
 
-const addComment = root + '/api/comments/',
+export const addCommentPath = root + '/comments/',
 	addReply = root + '/replies/',
 	login = root + '/api/auth/login/',
 	tokenRefresh = root + '/api/auth/login/refresh/',
 	register = root + '/api/auth/register/';
 
-function getAllComments(videoID) {
-	return `${root}/api/${videoID}/`;
-}
-
-function getAllReplies(commentID) {
-	return `${addComment}${commentID}/`;
-}
-
-function editComment(commentID) {
-	return `${root}/comments/${commentID}/`;
-}
-
-function editReply(replyID) {
-	return `${root}/${replyID}/`;
-}
-
-function toggleLike(type, responseID) {
-	return `${root}/api/${type}/${responseID}/like/`;
-}
-
-function toggleDislike(type, responseID) {
-	return `${root}/api/${type}/${responseID}/dislike/`;
-}
+const allCommentsPath = videoID => `${root}/api/${videoID}/`;
+const allRepliesPath = commentID => `${addCommentPath}${commentID}/`;
+const editCommentPath = commentID => `${root}/comments/${commentID}/`;
+const editReplyPath = replyID => `${root}/${replyID}/`;
+const toggleLikePath = (type, responseID) => `${root}/api/${type}/${responseID}/like/`;
+const toggleDislikePath = (type, responseID) => `${root}/api/${type}/${responseID}/dislike/`;
 
 export default {
-	addComment,
+	addCommentPath,
 	addReply,
 	login,
 	tokenRefresh,
 	register,
-	getAllComments,
-	getAllReplies,
-	editComment,
-	editReply,
-	toggleLike,
-	toggleDislike,
+	allCommentsPath,
+	allRepliesPath,
+	editCommentPath,
+	editReplyPath,
+	toggleLikePath,
+	toggleDislikePath,
 };
