@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	current: 'M7lc1UVf-VE',
+	id: 'M7lc1UVf-VE',
 };
 
 export const videoSlice = createSlice({
@@ -9,10 +9,10 @@ export const videoSlice = createSlice({
 	initialState,
 	reducers: {
 		setCurrentVideo: (state, action) => {
-			state.current = action.payload;
+			state.id = action.payload;
 		},
 	},
 });
 
 export const { setCurrentVideo } = videoSlice.actions;
-export const video = videoSlice.reducer;
+export const selectedVideo = videoSlice.reducer;
