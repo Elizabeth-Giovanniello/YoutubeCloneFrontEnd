@@ -1,7 +1,11 @@
+.video-card {
+	cursor: pointer;
+}
+
 .thumb {
-    overflow: hidden !important;
+	overflow: hidden !important;
 }
 .thumb img {
-    margin: -10% 0 !important;
-    width: 100% !important;
+	margin: -10% 0 !important;
+	width: 100% !important;
 }

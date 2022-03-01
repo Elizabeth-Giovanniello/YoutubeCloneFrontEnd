@@ -8,15 +8,18 @@ import {
 const GET_SNIPPET = 'selectedVideo/getSnippet';
 export const getSnippet = createAsyncThunk(GET_SNIPPET, async (_, thunkAPI) => {
 	const videoId = thunkAPI.getState().selectedVideo.videoId;
-	const snippet = await axios
-		.get(youtubeVideoSnippetPath(videoId))
-		.then(res => res.data.items[0].snippet);
-	thunkAPI.dispatch(setVideoSnippet(snippet));
+
+	const data = await axios.get(youtubeVideoSnippetPath(videoId)).then(res => {
+		const dataObj = res.data.items[0];
+		return { ...dataObj.snippet, ...dataObj.statistics };
+	});
+	thunkAPI.dispatch(setVideoSnippet(data));
 });
 
 const GET_RELATED = 'selectedVideo/getRelated';
 export const getRelatedVideos = createAsyncThunk(GET_RELATED, async (_, thunkAPI) => {
 	const videoId = thunkAPI.getState().selectedVideo.videoId;
+
 	const relatedVideos = await axios
 		.get(youtubeRelatedVideosPath(videoId))
 		.then(results => results.data.items);
@@ -25,11 +28,10 @@ export const getRelatedVideos = createAsyncThunk(GET_RELATED, async (_, thunkAPI
 });
 
 const initialState = {
-	videoId: 's-LD2RxqWMg',
-	title: 'MARRIAGE ATROCITIES TROLL PART 2 - TODAY TRENDING',
-	description:
-		'INSTAGRAM PAGE : https://www.instagram.com/todaytrendingtroll TWITTER PAGE : https://twitter.com/TodayTrendingTT ...',
-	publishedAt: '2022-02-28T12:38:37Z',
+	videoId: '',
+	title: '',
+	description: '',
+	publishedAt: '',
 	relatedVideos: [],
 };
 

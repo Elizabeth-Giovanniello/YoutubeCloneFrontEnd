@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addCommentPath } from '../../../Constants/apiPaths.js';
-import { addCommentReq, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.jsx';
+import { addCommentReq, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.js';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 
 const CommentForm = props => {
@@ -25,7 +25,7 @@ const CommentForm = props => {
 		);
 	};
 
-	const handleFocus = e => {
+	const handleFocus = () => {
 		setFocused(true);
 	};
 
