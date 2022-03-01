@@ -7,6 +7,8 @@ import { executeSearch, setSearchTerm } from './SearchSlice.js';
 
 import './SearchBar.css';
 import ClearBtn from './ClearBtn/ClearBtn.jsx';
+import { useNavigate } from 'react-router-dom';
+import { SEARCH } from '../../../Constants/routes.js';
 
 const SearchBar = props => {
 	// STATE
@@ -17,9 +19,12 @@ const SearchBar = props => {
 		dispatch(setSearchTerm(e.target.value));
 	};
 
+	const navigate = useNavigate();
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		dispatch(executeSearch(searchTerm));
+		navigate(SEARCH);
 	};
 
 	return (

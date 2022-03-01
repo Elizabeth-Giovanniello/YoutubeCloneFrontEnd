@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Components/Home/Home/Home';
 import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPage from './Components/VideoPage/VideoPage/VideoPage.jsx';
+import { HOME, SEARCH, VIDEO } from './Constants/routes.js';
 
 function App() {
 	const dispatch = useDispatch();
@@ -27,9 +28,9 @@ function App() {
 			<SignUpModal />
 			<NavBar />
 			<Routes>
-				<Route exact path='/' element={<Home />} />
-				<Route path='search' element={<SearchResults />} />
-				<Route path='video' element={<VideoPage />} />
+				<Route exact path={HOME} element={<Home />} />
+				<Route path={SEARCH} element={<SearchResults />} />
+				<Route path={VIDEO} element={<VideoPage />} />
 			</Routes>
 		</div>
 	);
