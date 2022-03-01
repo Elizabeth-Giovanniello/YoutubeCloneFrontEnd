@@ -1,10 +1,17 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addCommentPath } from '../../../Constants/apiPaths.js';
+import { addCommentReq, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.jsx';
+import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 
 const CommentForm = props => {
+	// STATE
+	const dispatch = useDispatch();
+	const { token } = useSelector(state => state.user);
+
 	const { selectedVideo, user } = useSelector(state => state);
 	const [focused, setFocused] = useState(false);
 	const [comment, setComment] = useState('');
@@ -13,21 +20,20 @@ const CommentForm = props => {
 		e.preventDefault();
 		await axios.post(
 			addCommentPath,
-			{
-				body: comment,
-				user_id: user.user_id,
-				video_id: selectedVideo.videoId,
-			},
-			{
-				headers: {
-					authorization: `Bearer ${localStorage.getItem('token')}`,
-				},
-			},
+			addCommentReq(comment, user.user_id, selectedVideo.videoId),
+			AUTH_HEADER,
 		);
 	};
 
-	const handleFocus = () => {
+	const handleFocus = e => {
 		setFocused(true);
+	};
+
+	const handleFieldClick = () => {
+		if (!token) {
+			dispatch(showSignIn());
+			setFocused(false);
+		}
 	};
 
 	const handleCancel = () => {
@@ -46,6 +52,8 @@ const CommentForm = props => {
 				<div>
 					<TextField
 						onFocus={handleFocus}
+						onClick={handleFieldClick}
+						disabled={token === ''}
 						fullWidth
 						autoComplete='off'
 						label='Add a comment...'

@@ -9,6 +9,7 @@ import apiPaths from '../Constants/apiPaths.js';
 import { closeSignUp } from '../Components/SignUpModal/SignUpModalSlice.js';
 
 const setToken = (value = '') => window.localStorage.setItem('token', value);
+
 const DEFAULT_USER_STATE = { user_id: null, token: '' };
 
 // THUNKS
