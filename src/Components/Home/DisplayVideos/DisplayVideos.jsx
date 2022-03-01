@@ -7,9 +7,9 @@ const DisplayVideos = (props) => {
 
 
     return ( 
-
+        <div>
             <VideoPanel title={"Popular Videos"} videos={videos}/>
-            
+        </div>
      );
 }
  
