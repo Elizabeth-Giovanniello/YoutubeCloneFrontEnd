@@ -1,27 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, Row, Col } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { setCurrentVideo } from '../../VideoPage/VideoPage/VideoSlice';
+import { VIDEO } from '../../../Constants/routes';
 
-const VideoCardHorizontal = ({title, description, thumbnail}) => {
+const VideoCardHorizontal = (props) => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    function handleVideoSelect(){
+        dispatch(setCurrentVideo(props.video));
+        navigate(VIDEO);
+    }
 
     return ( 
-        <Link to='video'>
-            <Card>
+        <Col>
+            <Card onClick={handleVideoSelect}>
                 <Row className='g-0'>
                     <Col className='md-4'>
-                        <Card.Img src={thumbnail}/>
+                        <Card.Img src={props.video.snippet.thumbnails.high.url}/>
                     </Col>
                     <Col className='md-8'>
                         <Card.Body>
-                            <Card.Title>{title}</Card.Title>
+                            <Card.Title>{props.video.snippet.title}</Card.Title>
                             <Card.Text>
-                                {description}
+                            {props.video.snippet.description}
                             </Card.Text>
                         </Card.Body>
                     </Col>
                 </Row>
             </Card>
-        </Link>
+        </Col>
      );
 }
  
