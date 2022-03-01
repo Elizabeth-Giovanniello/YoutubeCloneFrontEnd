@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 const VideoCard = ({title, description, thumbnail, orientation="top"}) => {
 
     return ( 
-        <Link to='video'>
+        <Link to='video' onClick="">
             <Card>
                 <Card.Img variant={orientation} src={thumbnail}/>
                 <Card.Body>

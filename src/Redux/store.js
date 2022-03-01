@@ -6,6 +6,7 @@ import displaySignUpModal from '../Components/SignUpModal/SignUpModalSlice.js';
 import { signUpForm } from '../Components/SignUpModal/SignUpForm/SignUpFormSlice.js';
 import { search } from '../Components/NavBar/SearchBar/SearchSlice.js';
 import { selectedVideo } from '../Components/VideoPage/VideoPage/VideoSlice.js';
+import { home } from '../Components/Home/Home/HomeSlice.js';
 
 export const store = configureStore({
 	reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
 		signUpForm,
 		search,
 		selectedVideo,
+        home,
 	},
 });
