@@ -12,19 +12,11 @@ const VideoPanel = (props) => {
         <Container className="mt-5 pb-5 border-bottom">
             <h3>{props.title}</h3>
             <Row>
-                {Array.from({ length: props.videos.length / 2}).map((_, idx) => (
-                    props.videos.map(function(video){
-                        const vidCardProps = {
-                            title: video.title,
-                            description: video.description,
-                            thumbnail: video.thumbnail,
-                        };
+                {props.videos.map(function(video){
                         return(
-                            <Col>
-                                <VideoCard {...vidCardProps}/>
-                            </Col>);
+                            <VideoCard video={video}/>);
                     })
-                ))}
+                }
             </Row>
         </Container>
      );

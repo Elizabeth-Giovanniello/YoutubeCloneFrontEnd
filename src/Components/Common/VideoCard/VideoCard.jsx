@@ -1,21 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { Card, Col } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { setCurrentVideo } from '../../VideoPage/VideoPage/VideoSlice';
+import { VIDEO } from '../../../Constants/routes';
 
-const VideoCard = ({title, description, thumbnail, orientation="top"}) => {
+const VideoCard = (props) => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    function handleVideoSelect(){
+        dispatch(setCurrentVideo(props.video));
+        navigate(VIDEO);
+    }
 
     return ( 
-        <Link to='video' onClick="">
-            <Card>
-                <Card.Img variant={orientation} src={thumbnail}/>
+        <Col>
+            <Card onClick={handleVideoSelect}>
+                <Card.Img variant="top" src={props.video.snippet.thumbnails.high.url}/>
                 <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>{props.video.snippet.title}</Card.Title>
                 <Card.Text>
-                    {description}
+                    {props.video.snippet.description}
                 </Card.Text>
                 </Card.Body>
             </Card>
-        </Link>
+        </Col>
      );
 }
  
