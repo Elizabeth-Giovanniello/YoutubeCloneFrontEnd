@@ -19,17 +19,18 @@ const VideoCardHorizontal = (props) => {
     return ( 
         <Row className="mb-3">
         <Col>
-            <Card onClick={handleVideoSelect} className='mx-5'>
+            <Card onClick={handleVideoSelect}>
                 <Row className='g-0'>
-                    <Col className='md-4'>
+                    <Col xs={6} sm={5} md={4} className="thumb">
                         <Card.Img src={props.video.snippet.thumbnails.high.url}/>
                     </Col>
-                    <Col className='md-8'>
+                    <Col xs={6} sm={7} md={8}>
                         <Card.Body>
                             <Card.Title>{props.video.snippet.title}</Card.Title>
                             <Card.Text>
-                            {props.video.snippet.description}
+                            {props.video.snippet.channelTitle}
                             </Card.Text>
+                            <small>{props.video.snippet.description}</small>
                         </Card.Body>
                     </Col>
                 </Row>

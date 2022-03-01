@@ -1,3 +1,8 @@
-.row {
-    height: 10% !important;
+.thumb {
+    overflow: hidden !important;
 }
+.thumb img {
+    margin: -10% 0 !important;
+    width: 100% !important;
+}
+
