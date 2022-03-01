@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	videoId: 'M7lc1UVf-VE',
-	title: '',
-	description: '',
-	publishedAt: '',
+	videoId: 's-LD2RxqWMg',
+	title: 'MARRIAGE ATROCITIES TROLL PART 2 - TODAY TRENDING',
+	description:
+		'INSTAGRAM PAGE : https://www.instagram.com/todaytrendingtroll TWITTER PAGE : https://twitter.com/TodayTrendingTT ...',
+	publishedAt: '2022-02-28T12:38:37Z',
 };
 
 export const videoSlice = createSlice({

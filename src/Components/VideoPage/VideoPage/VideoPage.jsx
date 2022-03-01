@@ -13,6 +13,7 @@ const VideoPage = props => {
 					<Col xs={8}>
 						<TitleBar />
 						<CommentForm />
+						<div className='m-5 p-5'>EXTENDER</div>
 					</Col>
 					<Col>
 						<div>Video Card</div>
