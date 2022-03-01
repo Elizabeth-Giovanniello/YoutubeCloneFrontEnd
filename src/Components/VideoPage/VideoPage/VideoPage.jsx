@@ -1,24 +1,18 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import CommentForm from '../CommentForm/CommentForm.jsx';
+import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const VideoPage = props => {
 	return (
 		<>
 			<VideoPlayer fullscreen />
-			<Container fluid>
+			<Container>
 				<Row className='mt-3'>
 					<Col xs={8}>
-						<Row>
-							<h4>Video Title</h4>
-							<Col></Col>
-						</Row>
-						<div>
-							<p>
-								<span># views</span>
-								<span>date</span>
-							</p>
-						</div>
+						<TitleBar />
+						<CommentForm />
 					</Col>
 					<Col>
 						<div>Video Card</div>

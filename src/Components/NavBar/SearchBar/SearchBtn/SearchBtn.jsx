@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import './SearchBtn.css';
 
 const SearchBtn = props => {
-	console.log(props);
 	return (
 		<InputAdornment className='search-btn-wrapper' position='end'>
 			<Button type='submit' form='search-form' color='primary' variant='contained'>
