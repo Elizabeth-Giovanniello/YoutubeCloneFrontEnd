@@ -17,7 +17,7 @@ const VideoCard = (props) => {
     }
 
     return ( 
-        <Col xs={6} sm={5} md={4} lg={3} xl={2}>
+        <Col xs={12} sm={5} md={4} lg={4} xl={3}>
             <Card onClick={handleVideoSelect}>
                 <div className="thumb">
                     <Card.Img variant="top" src={props.video.snippet.thumbnails.high.url}/>
