@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 import { ThreeDotsVertical, PencilFill, TrashFill } from 'react-bootstrap-icons';
-import './OptionsMenu.css'
+import DeleteResponse from '../DeleteResponse/DeleteResponse';
 
 
 const OptionsMenu = (props) => {
@@ -16,13 +16,13 @@ const OptionsMenu = (props) => {
             </Dropdown.Toggle>
             <Dropdown.Menu className="p-0">
                 <Dropdown.Item className="p-0">
-                    
+                    <p className="ps-3 m-0 pb-2 pt-2">
+                        <PencilFill className="text-danger me-3" size={18}/>
+                    Edit
+                    </p>
                 </Dropdown.Item>
                 <Dropdown.Item className="p-0">
-                    <p className="ps-3 m-0 pb-2 pt-2">
-                        <TrashFill className="text-danger me-3" size={18}/>
-                    Delete
-                    </p>
+                    <DeleteResponse type={props.type} pathFunc={props.pathFunc} response={props.response}/>
                 </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
@@ -30,3 +30,4 @@ const OptionsMenu = (props) => {
 }
  
 export default OptionsMenu;
+

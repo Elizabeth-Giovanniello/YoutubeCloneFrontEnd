@@ -7,9 +7,10 @@ import Replies from '../Replies/Replies.jsx';
 import ReplyBtn from '../ReplyBtn/ReplyBtn.jsx';
 import ReplyForm from '../ReplyForm/ReplyForm.jsx';
 import { parseDateTime } from '../../../../Helpers/commentsReplies.js';
-import { allRepliesPath } from '../../../../Constants/apiPaths.js';
+import { allRepliesPath, editCommentPath } from '../../../../Constants/apiPaths.js';
 import axios from 'axios';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
+import OptionsMenu from '../../../Common/OptionsMenu/OptionsMenu';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -43,6 +44,7 @@ const SingleComment = ({ comment }) => {
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
 				<Card.Text>{comment.body}</Card.Text>
+				<OptionsMenu pathFunc={editCommentPath} type={"comment"} response={comment}/>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
 				<LikeButton type='comments' response={comment} />

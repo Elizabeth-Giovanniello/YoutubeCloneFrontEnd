@@ -1,11 +1,29 @@
 import React from 'react';
+import ResponseForm from '../ResponseForm/ResponseForm';
+import { editCommentPath } from '../../../Constants/apiPaths';
+import { AUTH_HEADER } from '../../../Helpers/requests';
+import './OptionsMenu.css'
 
 const EditResponse = (props) => {
+
+    const dispatch = useDispatch();
+
+    async function editResponse(responseID, responseBody, pathFunc){
+
+        let response = await axios.put(pathFunc(responseID), {body: responseBody}, AUTH_HEADER)
+        .then(response => { 
+        console.log(response)
+        dispatch(fetchComments());
+        })
+        .catch(error => {
+            console.log(error.response)
+        });
+    }
+
     return ( 
-        <p className="ps-3 m-0 pb-2 pt-2">
-            <PencilFill className="text-danger me-3" size={18}/>
-        Edit
-        </p>
+        <div>
+            <ResponseForm/>
+        </div>
      );
 }
  
