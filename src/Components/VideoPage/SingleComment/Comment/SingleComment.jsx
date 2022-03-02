@@ -48,7 +48,7 @@ const SingleComment = ({ comment }) => {
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
 				<Card.Text>{comment.body}</Card.Text>
-				<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />
+				{user_id === comment.user.id && <OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />}
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
 				<LikeButton type='comments' response={comment} />
