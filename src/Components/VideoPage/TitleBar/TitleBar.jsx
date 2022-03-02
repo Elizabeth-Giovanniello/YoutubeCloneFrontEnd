@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+const truncateDesc = desc => desc.substring(0, 200);
+
 const TitleBar = props => {
 	const { title, description, publishedAt, viewCount } = useSelector(state => state.videoData);
 
@@ -16,7 +18,7 @@ const TitleBar = props => {
 				</p>
 			</div>
 			<div className='border-bottom pt-3'>
-				<p>{description}</p>
+				<p>{truncateDesc(description)}</p>
 			</div>
 		</>
 	);

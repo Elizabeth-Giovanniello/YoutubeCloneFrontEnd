@@ -5,7 +5,12 @@ import { useDispatch } from 'react-redux';
 import { VIDEO } from '../../../../Constants/routes.js';
 import { selectVideo } from '../../VideoPage/currentVideoSlice.js';
 
+import './RelatedVideoCard.css';
+import { truncate } from '../../../../Helpers/typography.js';
+
 const RelatedVideoCard = ({ video }) => {
+	const { title, channelTitle, thumbnails } = video.snippet;
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -19,13 +24,13 @@ const RelatedVideoCard = ({ video }) => {
 			<Col>
 				<Card onClick={handleVideoSelect} className='clickable'>
 					<Row className='g-0'>
-						<Col xs={6} sm={5} md={4} className='thumb'>
-							<Card.Img src={video.snippet.thumbnails.high.url} />
+						<Col xs={6} sm={5} md={5} className='thumb'>
+							<Card.Img src={thumbnails.high.url} />
 						</Col>
-						<Col xs={6} sm={7} md={8}>
-							<Card.Body>
-								<Card.Subtitle>{video.snippet.title}</Card.Subtitle>
-								<Card.Text>{video.snippet.channelTitle}</Card.Text>
+						<Col xs={6} sm={7} md={7}>
+							<Card.Body className='p-0 ps-1'>
+								<div className='rvc-title'>{truncate(title, 50)}</div>
+								<div className='rvc-name'>{channelTitle}</div>
 							</Card.Body>
 						</Col>
 					</Row>

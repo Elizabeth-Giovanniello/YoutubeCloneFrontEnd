@@ -34,7 +34,7 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 const SIGN_UP = 'user/signUp';
 export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 	try {
-		const response = await axios.post(registerPath, formData);
+		await axios.post(registerPath, formData);
 		thunkAPI.dispatch(signIn(formData));
 		thunkAPI.dispatch(closeSignUp());
 	} catch ({ response }) {
@@ -48,7 +48,6 @@ export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 			? data.password[0]
 			: '';
 
-		console.log(response.data);
 		thunkAPI.dispatch(setSignUpError(error));
 	}
 });
