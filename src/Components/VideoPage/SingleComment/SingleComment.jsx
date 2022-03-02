@@ -4,25 +4,13 @@ import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
 import SingleReply from '../SingleReply/SingleReply';
 import { useSelector } from 'react-redux';
+import { toggleLikePath } from '../../../Constants/apiPaths';
 
 const SingleComment = props => {
 	const user_id = useSelector(state => state.user.user_id);
 
 	const [open, setOpen] = useState(false);
-	const [userLikeStatus, setUserLikeStatus] = useState(props.comment.likes.includes(user_id));
-	const [userDislikeStatus, setUserDislikeStatus] = useState(
-		props.comment.dislikes.includes(user_id),
-	);
 
-	function changeLikeStatus() {
-		setUserLikeStatus(!userLikeStatus); //this might also just be changed to reflect the same as the default, once we get the database update going
-		//INSERT API CALL TO CHANGE LIKE STATUS IN DATABASE ALSO
-	}
-
-	function changeDislikeStatus() {
-		setUserDislikeStatus(!userDislikeStatus);
-		//ditto
-	}
 
 	return (
 		<Card className='border-0'>
@@ -34,12 +22,12 @@ const SingleComment = props => {
 				<Card.Text>{props.comment.body}</Card.Text>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
-				<Button variant='basic' onClick={changeLikeStatus}>
-					{userLikeStatus ? <ThumbUpAlt fontSize='small' /> : <ThumbUpOffAlt fontSize='small' />}
+				<Button variant='basic' onClick={() => props.toggleLike("comments", props.comment.id)}>
+					{props.comment.likes.includes(user_id) ? <ThumbUpAlt fontSize='small' /> : <ThumbUpOffAlt fontSize='small' />}
 				</Button>
 				<small className='text-muted'> {props.comment.likes.length} </small>
-				<Button variant='basic' onClick={changeDislikeStatus}>
-					{userDislikeStatus ? (
+				<Button variant='basic' onClick={() => props.toggleDislike("comments", props.comment.id)}>
+					{props.comment.dislikes.includes(user_id) ? (
 						<ThumbDownAlt fontSize='small' />
 					) : (
 						<ThumbDownOffAlt fontSize='small' />
