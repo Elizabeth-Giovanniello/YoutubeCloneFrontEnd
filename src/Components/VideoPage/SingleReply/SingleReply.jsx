@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Card, Collapse, Button } from 'react-bootstrap';
 import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
 import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
-import SingleReply from '../SingleReply/SingleReply';
 
-const SingleComment = (props) => {
+const SingleReply = (props) => {
 
-    const [open, setOpen] = useState(false);
       
 
     return ( 
@@ -20,27 +18,8 @@ const SingleComment = (props) => {
             <Card.Footer className="bg-white border-0">
                 <ThumbUpOffAlt fontSize='small'/><small className='text-muted'> 69 </small><ThumbDownOffAlt fontSize='small'/><small className="text-muted"> REPLY</small>
             </Card.Footer>
-            <Card.Footer className="bg-white border-0 pt-0">
-                <Button
-                    variant="basic"
-                    className="text-primary ps-0"
-                    onClick={() => setOpen(!open)}
-                    aria-controls="collapse-text"
-                    aria-expanded={open}>
-                    {open ? <CaretUpFill/> : <CaretDownFill/>}{(open ? " Hide" : " View")} replies
-                </Button>
-            </Card.Footer>
-            <Card.Footer className="bg-white border-0">
-            <Collapse in={open}>
-              <div id="collapse-text">
-                <SingleReply/>
-                <SingleReply/>
-                <SingleReply/>
-              </div>
-            </Collapse>
-            </Card.Footer>
         </Card>
      );
 }
  
-export default SingleComment;
+export default SingleReply;
