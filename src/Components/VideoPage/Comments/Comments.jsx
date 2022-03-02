@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDislikePath, toggleLikePath } from '../../../Constants/apiPaths.js';
+import { AUTH_HEADER } from '../../../Helpers/requests.js';
 import SingleComment from '../SingleComment/SingleComment.jsx';
 import { fetchComments } from './CommentsSlice.js';
 
@@ -11,7 +12,7 @@ const Comments = props => {
 
 	async function toggleLike(){ //need to include authorization header somehow?
 
-		let response = await axios.put(toggleLikePath)
+		let response = await axios.put(toggleLikePath, AUTH_HEADER)
 		.then(response => { 
 		  console.log(response)
 		})
@@ -22,7 +23,7 @@ const Comments = props => {
 
 	async function toggleDislike(){
 
-	let response = await axios.put(toggleDislikePath)
+	let response = await axios.put(toggleDislikePath, AUTH_HEADER)
 	.then(response => { 
 		console.log(response)
 	})
