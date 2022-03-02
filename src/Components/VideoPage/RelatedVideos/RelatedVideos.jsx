@@ -5,11 +5,14 @@ import { fetchRelatedVideos } from './relatedVideosSlice.js';
 
 const RelatedVideos = props => {
 	const dispatch = useDispatch();
+
+	// STATE
 	const { relatedVideos } = useSelector(state => state);
+	const { videoId } = useSelector(state => state);
 
 	useEffect(() => {
-		dispatch(fetchRelatedVideos());
-	}, [dispatch]);
+		if (videoId) dispatch(fetchRelatedVideos());
+	}, [videoId]);
 
 	const list = relatedVideos.map((video, i) =>
 		video?.snippet ? <VideoCardHorizontal key={video.id.videoId} video={video} /> : null,

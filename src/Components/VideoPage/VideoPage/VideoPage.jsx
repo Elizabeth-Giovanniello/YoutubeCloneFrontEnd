@@ -19,9 +19,8 @@ const VideoPage = props => {
 	const { videoId } = useSelector(state => state);
 
 	useEffect(() => {
-		!videoId && navigate(HOME);
-		dispatch(fetchVideoData());
-	}, [dispatch, navigate, videoId]);
+		if (videoId) dispatch(fetchVideoData());
+	}, [videoId]);
 
 	return (
 		<>

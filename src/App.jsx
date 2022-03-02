@@ -16,7 +16,6 @@ import { selectVideo } from './Components/VideoPage/VideoPage/currentVideoSlice.
 
 function App() {
 	const dispatch = useDispatch();
-
 	useEffect(() => {
 		const token = window.localStorage.getItem('token');
 		if (token) {
