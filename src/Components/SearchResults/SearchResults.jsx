@@ -16,7 +16,7 @@ const SearchResults = props => {
 	return (
 		<Container>
 			{searchResults.map(function (video) {
-				return <VideoCardHorizontal video={video} />;
+				return <VideoCardHorizontal key={video.id.videoId} video={video} />;
 			})}
 		</Container>
 	);

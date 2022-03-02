@@ -12,6 +12,7 @@ import VideoPage from './Components/VideoPage/VideoPage/VideoPage.jsx';
 import { HOME, SEARCH, VIDEO } from './Constants/routes.js';
 
 import './App.css';
+import { selectVideo } from './Components/VideoPage/VideoPage/currentVideoSlice.js';
 
 function App() {
 	const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
 			const user_id = jwtDecode(token).user_id;
 			dispatch(setUser({ user_id, token }));
 		}
+
+		const videoId = localStorage.getItem('videoId');
+		dispatch(selectVideo(videoId));
 	}, [dispatch]);
 
 	return (

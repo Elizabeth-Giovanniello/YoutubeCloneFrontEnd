@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const TitleBar = props => {
-	const { title, description, publishedAt } = useSelector(state => state.selectedVideo);
+	const { title, description, publishedAt } = useSelector(state => state.videoData);
 
 	const date = new Date(publishedAt).toDateString();
 

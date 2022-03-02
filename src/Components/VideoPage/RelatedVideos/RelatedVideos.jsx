@@ -1,12 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import VideoCardHorizontal from '../../Common/VideoCardHorizontal/VideoCardHorizontal.jsx';
+import { fetchRelatedVideos } from './relatedVideosSlice.js';
 
 const RelatedVideos = props => {
-	const { relatedVideos } = useSelector(state => state.selectedVideo);
+	const dispatch = useDispatch();
+	const { relatedVideos } = useSelector(state => state);
 
-	const list = relatedVideos.map(video =>
-		video?.snippet ? <VideoCardHorizontal key={video.id.videoId} video={video} /> : <></>,
+	useEffect(() => {
+		dispatch(fetchRelatedVideos());
+	}, [dispatch]);
+
+	const list = relatedVideos.map((video, i) =>
+		video?.snippet ? <VideoCardHorizontal key={video.id.videoId} video={video} /> : null,
 	);
 
 	return <div>{list}</div>;

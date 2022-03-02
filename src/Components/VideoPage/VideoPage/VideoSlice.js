@@ -5,55 +5,41 @@ import {
 	youtubeVideoSnippetPath,
 } from '../../../Constants/youtubePaths.js';
 
-const GET_SNIPPET = 'selectedVideo/getSnippet';
-export const getSnippet = createAsyncThunk(GET_SNIPPET, async (_, thunkAPI) => {
-	const videoId = thunkAPI.getState().selectedVideo.videoId;
+// 1. video "link" is clicked
+// 2. state.videoId is updated via selectVideo action
+// 3. navigate to video page and mount
+// 4. video page useffect dispatches thunk with state.videoId
+// 4a. thunk fetches snippet with videoId
+// 4b. thunk fetches related videos with videoId
+// 4c. thunk fetches all comments with videoId
+// 4d. thunk dispatches setVideoData with bundled data object
+// 5. setVideoData spreads data object into selectedVideo state
+
+const FETCH = 'videoData/fetch';
+export const fetchVideoData = createAsyncThunk(FETCH, async (_, thunkAPI) => {
+	const { videoId } = thunkAPI.getState();
 
 	const data = await axios.get(youtubeVideoSnippetPath(videoId)).then(res => {
 		const dataObj = res.data.items[0];
 		return { ...dataObj.snippet, ...dataObj.statistics };
 	});
-	thunkAPI.dispatch(setVideoSnippet(data));
-});
 
-const GET_RELATED = 'selectedVideo/getRelated';
-export const getRelatedVideos = createAsyncThunk(GET_RELATED, async (_, thunkAPI) => {
-	const videoId = thunkAPI.getState().selectedVideo.videoId;
-
-	const relatedVideos = await axios
-		.get(youtubeRelatedVideosPath(videoId))
-		.then(results => results.data.items);
-
-	thunkAPI.dispatch(setRelatedVideos(relatedVideos));
+	thunkAPI.dispatch(setVideoData(data));
 });
 
 const initialState = {
-	videoId: '',
 	title: '',
 	description: '',
 	publishedAt: '',
-	relatedVideos: [],
 };
 
 export const videoSlice = createSlice({
-	name: 'video',
+	name: 'videoData',
 	initialState,
 	reducers: {
-		setCurrentVideo: (state, action) => {
-			const { id, snippet } = action.payload;
-			const { videoId } = id;
-			const { title, description, publishedAt } = snippet;
-			localStorage.setItem('videoId', videoId);
-			return (state = { ...state, videoId, title, description, publishedAt });
-		},
-
-		setVideoSnippet: (state, action) => (state = { ...state, ...action.payload }),
-
-		setRelatedVideos: (state, action) => {
-			state.relatedVideos = action.payload;
-		},
+		setVideoData: (state, action) => (state = action.payload),
 	},
 });
 
-export const { setCurrentVideo, setRelatedVideos, setVideoSnippet } = videoSlice.actions;
-export const selectedVideo = videoSlice.reducer;
+export const { setCurrentVideo, setRelatedVideos, setVideoData } = videoSlice.actions;
+export const videoData = videoSlice.reducer;

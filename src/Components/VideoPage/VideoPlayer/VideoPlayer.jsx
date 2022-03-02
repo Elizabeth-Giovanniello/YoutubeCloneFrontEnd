@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import './VideoPlayer.css';
 const VideoPlayer = ({ fullscreen }) => {
 	// STATE
-	const { videoId } = useSelector(state => state.selectedVideo);
+	const { videoId } = useSelector(state => state);
 
 	const variant = fullscreen ? 'video-wrapper' : 'video-wrapper-sm';
 	return (

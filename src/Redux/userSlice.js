@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { setError } from '../Components/SignInModal/SignInForm/SignInFormSlice.js';
 import { closeSignIn } from '../Components/SignInModal/SignInModal/SignInModalSlice.js';
 
-import apiPaths from '../Constants/apiPaths.js';
+import { loginPath, registerPath } from '../Constants/apiPaths.js';
 import { closeSignUp } from '../Components/SignUpModal/SignUpModalSlice.js';
 
 const setToken = (value = '') => window.localStorage.setItem('token', value);
@@ -16,7 +16,7 @@ const DEFAULT_USER_STATE = { user_id: null, token: '' };
 const SIGN_IN = 'user/signIn';
 export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 	try {
-		const response = await axios.post(apiPaths.login, formData);
+		const response = await axios.post(loginPath, formData);
 		const token = response.data.access;
 		const user_id = jwtDecode(token).user_id;
 
@@ -33,7 +33,7 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 const SIGN_UP = 'user/signUp';
 export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 	try {
-		const response = await axios.post(apiPaths.register, formData);
+		const response = await axios.post(registerPath, formData);
 		thunkAPI.dispatch(signIn(formData));
 		thunkAPI.dispatch(closeSignUp());
 		console.log('User creation: success');

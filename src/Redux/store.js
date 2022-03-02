@@ -5,18 +5,24 @@ import { signInForm } from '../Components/SignInModal/SignInForm/SignInFormSlice
 import displaySignUpModal from '../Components/SignUpModal/SignUpModalSlice.js';
 import { signUpForm } from '../Components/SignUpModal/SignUpForm/SignUpFormSlice.js';
 import { search } from '../Components/NavBar/SearchBar/SearchSlice.js';
-import { selectedVideo } from '../Components/VideoPage/VideoPage/VideoSlice.js';
+import { videoData } from '../Components/VideoPage/VideoPage/VideoSlice.js';
 import { home } from '../Components/Home/Home/HomeSlice.js';
+import { videoId } from '../Components/VideoPage/VideoPage/currentVideoSlice.js';
+import { relatedVideos } from '../Components/VideoPage/RelatedVideos/relatedVideosSlice.js';
+import { comments } from '../Components/VideoPage/Comments/CommentsSlice.js';
 
 export const store = configureStore({
 	reducer: {
+		videoId,
+		videoData,
+		relatedVideos,
+		comments,
+		home,
 		displaySignInModal,
 		user,
 		signInForm,
 		displaySignUpModal,
 		signUpForm,
 		search,
-		selectedVideo,
-        home,
 	},
 });

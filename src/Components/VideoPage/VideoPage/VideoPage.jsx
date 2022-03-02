@@ -4,22 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HOME } from '../../../Constants/routes.js';
 import CommentForm from '../CommentForm/CommentForm.jsx';
+import Comments from '../Comments/Comments.jsx';
 import RelatedVideos from '../RelatedVideos/RelatedVideos.jsx';
 import SingleComment from '../SingleComment/SingleComment.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import { getRelatedVideos, getSnippet } from './VideoSlice.js';
+import { fetchVideoData, getRelatedVideos, getSnippet } from './VideoSlice.js';
 
 const VideoPage = props => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { videoId } = useSelector(state => state.selectedVideo);
+
+	// STATE
+	const { videoId } = useSelector(state => state);
 
 	useEffect(() => {
 		!videoId && navigate(HOME);
-		dispatch(getSnippet());
-		dispatch(getRelatedVideos());
-	}, []);
+		dispatch(fetchVideoData());
+	}, [dispatch, navigate, videoId]);
 
 	return (
 		<>
@@ -29,9 +31,7 @@ const VideoPage = props => {
 					<Col xs={8}>
 						<TitleBar />
 						<CommentForm />
-						<SingleComment />
-						<SingleComment/>
-						<SingleComment/>
+						<Comments />
 					</Col>
 					<Col xs={4}>
 						<RelatedVideos />
