@@ -10,12 +10,15 @@ const Replies = ({ replies }) => {
 
 	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />);
 
+	const singleReply = replies.length === 1 && repliesList[0];
+
 	return (
 		<>
-			{replies.length > 0 && <RepliesBtn open={open} onClick={handleBtn} />}
+			{replies.length > 1 && <RepliesBtn open={open} onClick={handleBtn} />}
 			<Collapse in={open}>
 				<div id='collapse-text'>{repliesList}</div>
 			</Collapse>
+			{singleReply}
 		</>
 	);
 };

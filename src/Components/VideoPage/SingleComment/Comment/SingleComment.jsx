@@ -36,6 +36,10 @@ const SingleComment = ({ comment }) => {
 
 	const ts = parseDateTime(comment.timestamp);
 
+	const singleReply = newReply !== null && !showReplyForm && replies.length !== 1 && (
+		<SingleReply reply={newReply} />
+	);
+
 	return (
 		<Card className='border-0'>
 			<Card.Header className='bg-white border-0'>
@@ -44,7 +48,7 @@ const SingleComment = ({ comment }) => {
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
 				<Card.Text>{comment.body}</Card.Text>
-				<OptionsMenu pathFunc={editCommentPath} type={"comment"} response={comment}/>
+				<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
 				<LikeButton type='comments' response={comment} />
@@ -56,7 +60,7 @@ const SingleComment = ({ comment }) => {
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
 				<Replies replies={replies} />
-				{newReply !== null && !showReplyForm && <SingleReply reply={newReply} />}
+				{singleReply}
 			</Card.Footer>
 		</Card>
 	);

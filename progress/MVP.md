@@ -24,6 +24,6 @@
 
 <!-- (7.5 points) As a registered user, I want to add a comment to a video in the comment section (Using Axios to make POST requests to my backend API). When comments are added to the backend for a specific video, I want to make a GET request every time that video is loaded as the currently playing video and see all comments for that video. -->
 
-(5 points) As a registered user, I want to like or dislike a comment in the comments section (Using Axios to make PUT requests to my backend API).
+<!-- (5 points) As a registered user, I want to like or dislike a comment in the comments section (Using Axios to make PUT requests to my backend API). -->
 
-(7.5 points) As a registered user, I want to reply to another comment in the comments section (Using Axios to make POST requests to my backend API).
+<!-- (7.5 points) As a registered user, I want to reply to another comment in the comments section (Using Axios to make POST requests to my backend API). -->
