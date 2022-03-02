@@ -12,10 +12,9 @@ const LikeButton = ({ type, response }) => {
 	const dispatch = useDispatch();
 
 	async function toggleLike() {
-		let response = await axios
+		await axios
 			.put(toggleLikePath(type, response.id), '', AUTH_HEADER)
-			.then(response => {
-				console.log(response);
+			.then(res => {
 				dispatch(fetchComments());
 			})
 			.catch(error => {

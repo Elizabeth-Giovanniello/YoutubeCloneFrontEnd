@@ -1,30 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Collapse } from 'react-bootstrap';
-import { allRepliesPath } from '../../../../Constants/apiPaths.js';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
 
-const Replies = ({ comment }) => {
-	const [open, setOpen] = useState(true);
-	const [replies, setReplies] = useState([]);
+const Replies = ({ comment, replies }) => {
+	const [open, setOpen] = useState(false);
 
-	useEffect(() => {
-		fetchReplies();
-	}, []);
+	const handleBtn = async () => setOpen(!open);
 
-	const fetchReplies = async () => {
-		const res = await axios.get(allRepliesPath(comment.id));
-		setReplies(res.data);
-	};
-
-	const handleBtn = async () => {
-		setOpen(!open);
-		if (open) {
-		}
-	};
-
-	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />);
+	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />).reverse();
 
 	return (
 		<>

@@ -12,9 +12,9 @@ const DislikeButton = ({ type, response }) => {
 	const dispatch = useDispatch();
 
 	async function toggleDislike() {
-		let response = await axios
+		await axios
 			.put(toggleDislikePath(type, response.id), '', AUTH_HEADER)
-			.then(response => {
+			.then(res => {
 				dispatch(fetchComments());
 			})
 			.catch(error => {
