@@ -7,6 +7,6 @@ export const AUTH_HEADER = {
 	},
 };
 
-export const addCommentReq = (body, user_id, video_id) => {
+export const addCommentReqBody = (body, user_id, video_id) => {
 	return { body, user_id, video_id };
 };

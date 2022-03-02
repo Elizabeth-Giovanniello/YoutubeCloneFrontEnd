@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addCommentPath } from '../../../Constants/apiPaths.js';
-import { addCommentReq, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.js';
+import { addCommentReqBody, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.js';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 import { fetchComments } from '../Comments/CommentsSlice.js';
 
@@ -20,7 +20,11 @@ const CommentForm = props => {
 	const postComment = async e => {
 		e.preventDefault();
 		try {
-			await axios.post(addCommentPath, addCommentReq(comment, user.user_id, videoId), AUTH_HEADER);
+			await axios.post(
+				addCommentPath,
+				addCommentReqBody(comment, user.user_id, videoId),
+				AUTH_HEADER,
+			);
 			setComment('');
 			dispatch(fetchComments());
 		} catch (error) {
