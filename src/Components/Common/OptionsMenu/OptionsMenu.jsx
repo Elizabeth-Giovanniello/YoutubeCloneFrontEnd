@@ -5,7 +5,7 @@ import DeleteResponse from '../DeleteResponse/DeleteResponse';
 
 import './OptionsMenu.css';
 
-const OptionsMenu = ({ type, pathFunc, response }) => {
+const OptionsMenu = ({ type, pathFunc, response, setShowEditForm }) => {
 	const [isHighlighted, setIsHighlighted] = useState(false);
 
 	return (
@@ -17,7 +17,7 @@ const OptionsMenu = ({ type, pathFunc, response }) => {
 					onMouseLeave={() => setIsHighlighted(false)}></ThreeDotsVertical>
 			</Dropdown.Toggle>
 			<Dropdown.Menu className='p-0'>
-				<Dropdown.Item className='p-0'>
+				<Dropdown.Item className='p-0' onClick={()=> setShowEditForm(true)}>
 					<p className='ps-3 m-0 pb-2 pt-2'>
 						<PencilFill className='text-danger me-3' size={18} />
 						Edit

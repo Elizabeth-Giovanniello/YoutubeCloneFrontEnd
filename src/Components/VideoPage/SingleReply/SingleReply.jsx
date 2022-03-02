@@ -21,7 +21,7 @@ const SingleReply = ({ reply }) => {
 				<div className='d-flex justify-content-between'>
 					<Card.Text>{reply.body}</Card.Text>
 					{user_id === reply.user.id && (
-						<OptionsMenu pathFunc={editReplyPath} type={'reply'} response={reply} />
+						<OptionsMenu pathFunc={editReplyPath} type={'reply'} response={reply}/>
 					)}
 				</div>
 			</Card.Body>

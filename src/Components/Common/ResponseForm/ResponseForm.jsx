@@ -1,7 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
-const ResponseForm = ({ type, onSubmit, onCancel, resBody = '' }) => {
+const ResponseForm = ({ type, onSubmit, onCancel, resBody = '', action="save" }) => {
 	const [response, setResponse] = useState(resBody);
 
 	const handleChange = e => {
@@ -35,7 +35,7 @@ const ResponseForm = ({ type, onSubmit, onCancel, resBody = '' }) => {
 							CANCEL
 						</Button>
 						<Button form={`${type}-form`} type='submit' variant='contained' className='ms-3'>
-							{type.toUpperCase()}
+							{action.toUpperCase()}
 						</Button>
 					</div>
 				</div>

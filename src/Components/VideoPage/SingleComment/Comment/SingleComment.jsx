@@ -11,6 +11,8 @@ import { allRepliesPath, editCommentPath } from '../../../../Constants/apiPaths.
 import axios from 'axios';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import OptionsMenu from '../../../Common/OptionsMenu/OptionsMenu';
+import ResponseForm from '../../../Common/ResponseForm/ResponseForm';
+import EditResponse from '../../../Common/EditResponse/EditResponse';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -20,6 +22,7 @@ const SingleComment = ({ comment }) => {
 	const [showReplyForm, setShowReplyForm] = useState(false);
 	const [replies, setReplies] = useState([]);
 	const [newReply, setNewReply] = useState(null);
+	const [showEditForm, setShowEditForm] = useState(false);
 
 	useEffect(() => {
 		fetchReplies();
@@ -41,6 +44,7 @@ const SingleComment = ({ comment }) => {
 	);
 
 	return (
+		showEditForm ? <EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm}/> :
 		<Card className='border-0'>
 			<Card.Header className='bg-white border-0'>
 				<strong>{comment.user.username} </strong>
@@ -50,7 +54,7 @@ const SingleComment = ({ comment }) => {
 				<div className='d-flex justify-content-between'>
 					<Card.Text>{comment.body}</Card.Text>
 					{user_id === comment.user.id && (
-						<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />
+						<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} setShowEditForm={setShowEditForm}/>
 					)}
 				</div>
 			</Card.Body>

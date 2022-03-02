@@ -19,7 +19,7 @@ const DeleteResponse = (props) => {
     
 
     async function deleteResponse(responseID, responseBody, pathFunc){
-
+        
         let response = await axios.delete(pathFunc(responseID), {body: responseBody}, AUTH_HEADER)
         .then(response => { 
         console.log(response)

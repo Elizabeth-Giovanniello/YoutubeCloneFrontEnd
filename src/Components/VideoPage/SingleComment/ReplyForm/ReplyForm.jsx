@@ -15,7 +15,7 @@ const ReplyForm = ({ comment, onCancel, setNewReply }) => {
 		dispatch(fetchComments());
 	};
 
-	return <ResponseForm type='reply' onSubmit={handleSubmit} onCancel={onCancel} />;
+	return <ResponseForm type='reply' onSubmit={handleSubmit} onCancel={onCancel}  action={'reply'}/>;
 };
 
 export default ReplyForm;

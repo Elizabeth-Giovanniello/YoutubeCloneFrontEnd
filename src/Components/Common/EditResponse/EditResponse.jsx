@@ -2,7 +2,9 @@ import React from 'react';
 import ResponseForm from '../ResponseForm/ResponseForm';
 import { editCommentPath } from '../../../Constants/apiPaths';
 import { AUTH_HEADER } from '../../../Helpers/requests';
-import './OptionsMenu.css'
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { fetchComments } from '../../VideoPage/Comments/CommentsSlice';
 
 const EditResponse = (props) => {
 
@@ -20,10 +22,16 @@ const EditResponse = (props) => {
         });
     }
 
+    function onSubmit(response) {
+        editResponse(props.response.id, response.body, props.pathFunc);
+    }
+
+    function onCancel(){
+        props.setShowEditForm(false);
+    }
+
     return ( 
-        <div>
-            <ResponseForm/>
-        </div>
+        <ResponseForm type={"comment"} onSubmit={onSubmit} onCancel={onCancel} resBody={props.response.body}/> 
      );
 }
  
