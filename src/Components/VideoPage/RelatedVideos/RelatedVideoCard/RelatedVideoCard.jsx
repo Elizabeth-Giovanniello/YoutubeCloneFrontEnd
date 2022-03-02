@@ -24,11 +24,11 @@ const RelatedVideoCard = ({ video }) => {
 			<Col>
 				<Card onClick={handleVideoSelect} className='clickable'>
 					<Row className='g-0'>
-						<Col xs={6} sm={5} md={5} className='thumb'>
+						<Col xs={6} sm={5} md={6} className='thumb'>
 							<Card.Img src={thumbnails.high.url} />
 						</Col>
-						<Col xs={6} sm={7} md={7}>
-							<Card.Body className='p-0 ps-1'>
+						<Col xs={6} sm={7} md={6}>
+							<Card.Body className='p-0 ps-1 pe-1'>
 								<div className='rvc-title'>{truncate(title, 50)}</div>
 								<div className='rvc-name'>{channelTitle}</div>
 							</Card.Body>

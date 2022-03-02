@@ -20,14 +20,14 @@ const SearchVideoCard = ({ video }) => {
 			<Col>
 				<Card onClick={handleVideoSelect} className='clickable'>
 					<Row className='g-0'>
-						<Col xs={6} sm={5} md={4} className='thumb'>
+						<Col sm={6} md={6} lg={4} className='thumb'>
 							<Card.Img src={video.snippet.thumbnails.high.url} />
 						</Col>
-						<Col xs={6} sm={7} md={8}>
-							<Card.Body>
-								<Card.Title>{video.snippet.title}</Card.Title>
-								<Card.Text>{video.snippet.channelTitle}</Card.Text>
-								<small>{video.snippet.description}</small>
+						<Col sm={6} md={6} lg={8}>
+							<Card.Body className='p-0 ps-1 pe-1'>
+								<div className='svc-title'>{video.snippet.title}</div>
+								<div className='svc-channel'>{video.snippet.channelTitle}</div>
+								<div className='svc-desc'>{video.snippet.description}</div>
 							</Card.Body>
 						</Col>
 					</Row>

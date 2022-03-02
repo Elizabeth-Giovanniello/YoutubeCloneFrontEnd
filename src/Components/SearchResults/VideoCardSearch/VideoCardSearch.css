@@ -1,8 +1,23 @@
 .thumb {
-    overflow: hidden !important;
+	overflow: hidden !important;
 }
 .thumb img {
-    margin: -10% 0 !important;
-    width: 100% !important;
+	margin: -10% 0 !important;
+	width: 100% !important;
 }
 
+.svc-title {
+	font-size: medium;
+	font-weight: 600;
+	padding-bottom: 0.4rem;
+}
+
+.svc-channel {
+	font-size: small;
+	font-weight: 500;
+	padding-bottom: 0.4rem;
+}
+
+.svc-desc {
+	font-size: small;
+}
