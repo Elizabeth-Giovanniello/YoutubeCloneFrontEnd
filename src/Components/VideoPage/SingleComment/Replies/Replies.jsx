@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Collapse } from 'react-bootstrap';
+import { allRepliesPath } from '../../../../Constants/apiPaths.js';
+import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
 
-const Replies = props => {
+const Replies = ({ comment }) => {
 	const [open, setOpen] = useState(false);
+	const [replies, setReplies] = useState([]);
+
+	useEffect(() => {
+		fetchReplies();
+	}, []);
+
+	const fetchReplies = async () => {
+		const res = await axios.get(allRepliesPath(comment.id));
+		setReplies(res.data);
+	};
+
+	const handleBtn = async () => {
+		setOpen(!open);
+		if (open) {
+		}
+	};
+
+	const repliesList = replies.map(reply => <SingleReply reply={reply} />);
 
 	return (
 		<>
-			<RepliesBtn open={open} onClick={setOpen} />
+			{replies.length > 0 && <RepliesBtn open={open} onClick={handleBtn} />}
 			<Collapse in={open}>
-				<div id='collapse-text'>
-					<p>1</p>
-					<p>1</p>
-					<p>1</p>
-				</div>
+				<div id='collapse-text'>{repliesList}</div>
 			</Collapse>
 		</>
 	);

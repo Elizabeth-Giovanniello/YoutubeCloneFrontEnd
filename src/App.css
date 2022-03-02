@@ -5,3 +5,7 @@ p {
 .clickable {
 	cursor: pointer;
 }
+
+.btn {
+	user-select: none;
+}

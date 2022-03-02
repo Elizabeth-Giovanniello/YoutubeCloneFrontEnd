@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import LikeButton from '../../LikeButton/LikeButton';
 import DislikeButton from '../../DislikeButton/DislikeButton';
 import Replies from '../Replies/Replies.jsx';
+import ReplyBtn from '../ReplyBtn/ReplyBtn.jsx';
+import ReplyForm from '../ReplyForm/ReplyForm.jsx';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
+
+	// LOCAL STATE
+	const [showReplyForm, setShowReplyForm] = useState(false);
+
+	const handleReplyForm = () => {
+		setShowReplyForm(!showReplyForm);
+	};
 
 	const ts = parseDateTime(comment.timestamp);
 
@@ -23,12 +32,12 @@ const SingleComment = ({ comment }) => {
 				<LikeButton type='comments' response={comment} />
 				<small className='text-muted'> {comment.likes.length} </small>
 				<DislikeButton type='comments' response={comment} />
-				<small className='text-muted'> REPLY</small>
+				<ReplyBtn onClick={handleReplyForm} />
+				{showReplyForm && <ReplyForm />}
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
-				<Replies />
+				<Replies comment={comment} />
 			</Card.Footer>
-			<Card.Footer className='bg-white border-0'></Card.Footer>
 		</Card>
 	);
 };

@@ -1,24 +1,21 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { HOME } from '../../../Constants/routes.js';
 import CommentForm from '../CommentForm/CommentForm.jsx';
 import Comments from '../Comments/Comments.jsx';
 import RelatedVideos from '../RelatedVideos/RelatedVideos/RelatedVideos.jsx';
-import SingleComment from '../SingleComment/Comment/SingleComment.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import { fetchVideoData, getRelatedVideos, getSnippet } from './VideoSlice.js';
+import { fetchVideoData } from './VideoSlice.js';
 
 const VideoPage = props => {
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	// STATE
 	const { videoId } = useSelector(state => state);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		if (videoId) dispatch(fetchVideoData());
 	}, [videoId]);
 
