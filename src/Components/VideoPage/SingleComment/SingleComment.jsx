@@ -5,6 +5,8 @@ import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/i
 import SingleReply from '../SingleReply/SingleReply';
 import { useSelector } from 'react-redux';
 import { toggleLikePath } from '../../../Constants/apiPaths';
+import LikeButton from '../LikeButton/LikeButton';
+import DislikeButton from '../DislikeButton/DislikeButton';
 
 const SingleComment = props => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -22,17 +24,9 @@ const SingleComment = props => {
 				<Card.Text>{props.comment.body}</Card.Text>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
-				<Button variant='basic' onClick={() => props.toggleLike("comments", props.comment.id)}>
-					{props.comment.likes.includes(user_id) ? <ThumbUpAlt fontSize='small' /> : <ThumbUpOffAlt fontSize='small' />}
-				</Button>
+				<LikeButton response={props.comment}/>
 				<small className='text-muted'> {props.comment.likes.length} </small>
-				<Button variant='basic' onClick={() => props.toggleDislike("comments", props.comment.id)}>
-					{props.comment.dislikes.includes(user_id) ? (
-						<ThumbDownAlt fontSize='small' />
-					) : (
-						<ThumbDownOffAlt fontSize='small' />
-					)}
-				</Button>
+				<DislikeButton response={props.comment}/>
 				<small className='text-muted'> REPLY</small>
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
