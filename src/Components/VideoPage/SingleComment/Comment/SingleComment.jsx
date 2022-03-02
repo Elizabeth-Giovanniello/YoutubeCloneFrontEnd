@@ -47,8 +47,12 @@ const SingleComment = ({ comment }) => {
 				<small className='text-muted'>{ts}</small>
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
-				<Card.Text>{comment.body}</Card.Text>
-				{user_id === comment.user.id && <OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />}
+				<div className='d-flex justify-content-between'>
+					<Card.Text>{comment.body}</Card.Text>
+					{user_id === comment.user.id && (
+						<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} />
+					)}
+				</div>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
 				<LikeButton type='comments' response={comment} />
