@@ -35,7 +35,7 @@ const LikeButton = ({ type, response }) => {
 					<ThumbUpOffAlt fontSize='small' />
 				)}
 			</span>
-			<small className='text-muted'> {response.likes.length} </small>
+			{response.likes.length > 0 && <small className='text-muted'> {response.likes.length} </small>}
 		</>
 	);
 };

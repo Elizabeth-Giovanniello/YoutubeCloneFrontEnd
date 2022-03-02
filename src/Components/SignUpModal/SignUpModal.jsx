@@ -4,25 +4,22 @@ import SubmitBtn from '../Common/SubmitBtn/SubmitBtn.jsx';
 import UserModal from '../Common/UserModal/UserModal.jsx';
 import SignUpForm from './SignUpForm/SignUpForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSlider } from '@mui/base';
 import { hideSignUp } from './SignUpModalSlice.js';
 
 const SignUpModal = props => {
-
 	const dispatch = useDispatch();
 
 	const handleHide = () => {
-		dispatch(hideSignUp())
+		dispatch(hideSignUp());
 	};
 
-	const show = useSelector((state) => state.displaySignUpModal)
-
+	const show = useSelector(state => state.displaySignUpModal);
 
 	const modalProps = {
 		title: 'Create new account',
-		titleBtn: <SignInButton variant="text"/>,
-		form: <SignUpForm/>,
-		submitBtn: <SubmitBtn formId='sign-up-form' title="Sign Up" />,
+		titleBtn: <SignInButton variant='text' />,
+		form: <SignUpForm />,
+		submitBtn: <SubmitBtn formId='sign-up-form' title='Sign Up' />,
 		show: show,
 		hide: handleHide,
 	};

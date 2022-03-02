@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card } from 'react-bootstrap';
-import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
 import { parseDateTime } from '../../../Helpers/commentsReplies.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import DislikeButton from '../DislikeButton/DislikeButton.jsx';

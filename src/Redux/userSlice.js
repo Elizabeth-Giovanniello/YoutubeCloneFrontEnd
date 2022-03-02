@@ -7,6 +7,7 @@ import { closeSignIn } from '../Components/SignInModal/SignInModal/SignInModalSl
 
 import { loginPath, registerPath } from '../Constants/apiPaths.js';
 import { closeSignUp } from '../Components/SignUpModal/SignUpModalSlice.js';
+import { setSignUpError } from '../Components/SignUpModal/SignUpForm/SignUpFormSlice.js';
 
 const setToken = (value = '') => window.localStorage.setItem('token', value);
 
@@ -36,10 +37,19 @@ export const signUp = createAsyncThunk(SIGN_UP, async (formData, thunkAPI) => {
 		const response = await axios.post(registerPath, formData);
 		thunkAPI.dispatch(signIn(formData));
 		thunkAPI.dispatch(closeSignUp());
-		console.log('User creation: success');
-	} catch (error) {
-		//TODO: implement error handling
-		console.log(error);
+	} catch ({ response }) {
+		const { data } = response;
+
+		const error = data.username
+			? data.username[0]
+			: data.email
+			? 'Email already exists.'
+			: data.password
+			? data.password[0]
+			: '';
+
+		console.log(response.data);
+		thunkAPI.dispatch(setSignUpError(error));
 	}
 });
 
