@@ -22,7 +22,7 @@
 
 <!-- (5 points) As a user, I want to be able to select a video to be played from the list of related videos to my search. -->
 
-(7.5 points) As a registered user, I want to add a comment to a video in the comment section (Using Axios to make POST requests to my backend API). When comments are added to the backend for a specific video, I want to make a GET request every time that video is loaded as the currently playing video and see all comments for that video.
+<!-- (7.5 points) As a registered user, I want to add a comment to a video in the comment section (Using Axios to make POST requests to my backend API). When comments are added to the backend for a specific video, I want to make a GET request every time that video is loaded as the currently playing video and see all comments for that video. -->
 
 (5 points) As a registered user, I want to like or dislike a comment in the comments section (Using Axios to make PUT requests to my backend API).
 

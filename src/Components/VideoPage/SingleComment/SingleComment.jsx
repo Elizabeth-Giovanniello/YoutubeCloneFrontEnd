@@ -8,25 +8,26 @@ import { toggleLikePath } from '../../../Constants/apiPaths';
 import LikeButton from '../LikeButton/LikeButton';
 import DislikeButton from '../DislikeButton/DislikeButton';
 
-const SingleComment = props => {
+const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
 
 	const [open, setOpen] = useState(false);
 
+	const ts = parseDateTime(comment.timestamp);
 
 	return (
 		<Card className='border-0'>
 			<Card.Header className='bg-white border-0'>
-				<strong>{props.comment.user.username} </strong>
-				<small className='text-muted'>{props.comment.timestamp}</small>
+				<strong>{comment.user.username} </strong>
+				<small className='text-muted'>{ts}</small>
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
-				<Card.Text>{props.comment.body}</Card.Text>
+				<Card.Text>{comment.body}</Card.Text>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
-				<LikeButton type="comments" response={props.comment}/>
-				<small className='text-muted'> {props.comment.likes.length} </small>
-				<DislikeButton type="comments" response={props.comment}/>
+				<LikeButton type='comments' response={comment} />
+				<small className='text-muted'> {comment.likes.length} </small>
+				<DislikeButton type='comments' response={comment} />
 				<small className='text-muted'> REPLY</small>
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
@@ -54,3 +55,10 @@ const SingleComment = props => {
 };
 
 export default SingleComment;
+
+function parseDateTime(timestamp) {
+	const dateTime = new Date(timestamp);
+	const date = dateTime.toLocaleDateString();
+	const time = dateTime.toLocaleTimeString();
+	return `${date} ${time}`;
+}

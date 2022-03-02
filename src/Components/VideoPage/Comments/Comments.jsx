@@ -15,16 +15,9 @@ const Comments = props => {
 		if (videoId) dispatch(fetchComments());
 	}, [videoId]);
 
-
-
-	const allComments = comments.map((comment, i) =>
-		comment ? (
-			<SingleComment
-				key={i}
-				comment={comment}
-			/>
-		) : null,
-	);
+	const allComments = comments
+		.map((comment, i) => (comment ? <SingleComment key={i} comment={comment} /> : null))
+		.reverse();
 
 	return <div>{allComments}</div>;
 };
