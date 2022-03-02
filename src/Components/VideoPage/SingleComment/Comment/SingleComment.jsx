@@ -49,7 +49,7 @@ const SingleComment = ({ comment }) => {
 				{showReplyForm && <ReplyForm comment={comment} onCancel={handleReplyForm} />}
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
-				<Replies comment={comment} replies={replies} />
+				<Replies replies={replies} />
 			</Card.Footer>
 		</Card>
 	);

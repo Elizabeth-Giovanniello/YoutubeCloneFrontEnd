@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
+import React from 'react';
+import { ThumbDownOffAlt, ThumbDownAlt } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDislikePath } from '../../../Constants/apiPaths';
 import axios from 'axios';
@@ -24,7 +23,7 @@ const DislikeButton = ({ type, response }) => {
 
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
-		<Button variant='basic' onClick={() => toggleDislike()}>
+		<span className='clickable btn' variant='basic' onClick={() => toggleDislike()}>
 			{response.dislikes
 				.map(function (like) {
 					return like.user;
@@ -34,7 +33,7 @@ const DislikeButton = ({ type, response }) => {
 			) : (
 				<ThumbDownOffAlt fontSize='small' />
 			)}
-		</Button>
+		</span>
 	);
 };
 

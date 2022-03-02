@@ -26,6 +26,7 @@ const CommentForm = props => {
 				AUTH_HEADER,
 			);
 			setComment('');
+			setFocused(false);
 			dispatch(fetchComments());
 		} catch (error) {
 			console.log(error);

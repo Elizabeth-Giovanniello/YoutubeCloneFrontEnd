@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
+import React from 'react';
+import { ThumbUpOffAlt, ThumbUpAlt } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleLikePath } from '../../../Constants/apiPaths';
 import { AUTH_HEADER } from '../../../Helpers/requests';
@@ -25,7 +24,7 @@ const LikeButton = ({ type, response }) => {
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
 		<>
-			<Button variant='basic' onClick={() => toggleLike()}>
+			<span variant='basic' className='clickable btn' onClick={() => toggleLike()}>
 				{response.likes
 					.map(function (like) {
 						return like.user;
@@ -35,7 +34,7 @@ const LikeButton = ({ type, response }) => {
 				) : (
 					<ThumbUpOffAlt fontSize='small' />
 				)}
-			</Button>
+			</span>
 			<small className='text-muted'> {response.likes.length} </small>
 		</>
 	);
