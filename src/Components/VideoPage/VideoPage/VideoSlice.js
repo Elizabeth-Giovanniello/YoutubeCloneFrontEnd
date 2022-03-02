@@ -31,6 +31,7 @@ const initialState = {
 	title: '',
 	description: '',
 	publishedAt: '',
+	viewCount: '',
 };
 
 export const videoSlice = createSlice({

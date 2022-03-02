@@ -6,23 +6,21 @@ import { useSelector } from 'react-redux';
 import { addCommentPath } from '../../../Constants/apiPaths.js';
 import { addCommentReq, AUTH_HEADER, TOKEN } from '../../../Helpers/requests.js';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
+import { fetchComments } from '../Comments/CommentsSlice.js';
 
 const CommentForm = props => {
 	// STATE
 	const dispatch = useDispatch();
 	const { token } = useSelector(state => state.user);
 
-	const { selectedVideo, user } = useSelector(state => state);
+	const { videoId, user } = useSelector(state => state);
 	const [focused, setFocused] = useState(false);
 	const [comment, setComment] = useState('');
 
 	const postComment = async e => {
 		e.preventDefault();
-		await axios.post(
-			addCommentPath,
-			addCommentReq(comment, user.user_id, selectedVideo.videoId),
-			AUTH_HEADER,
-		);
+		await axios.post(addCommentPath, addCommentReq(comment, user.user_id, videoId), AUTH_HEADER);
+		dispatch(fetchComments());
 	};
 
 	const handleFocus = () => {
