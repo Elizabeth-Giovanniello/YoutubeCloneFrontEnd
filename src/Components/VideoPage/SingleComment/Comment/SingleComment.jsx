@@ -9,6 +9,7 @@ import ReplyForm from '../ReplyForm/ReplyForm.jsx';
 import { parseDateTime } from '../../../../Helpers/commentsReplies.js';
 import { allRepliesPath } from '../../../../Constants/apiPaths.js';
 import axios from 'axios';
+import SingleReply from '../../SingleReply/SingleReply.jsx';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -17,6 +18,7 @@ const SingleComment = ({ comment }) => {
 	// LOCAL STATE
 	const [showReplyForm, setShowReplyForm] = useState(false);
 	const [replies, setReplies] = useState([]);
+	const [newReply, setNewReply] = useState(null);
 
 	useEffect(() => {
 		fetchReplies();
@@ -46,10 +48,13 @@ const SingleComment = ({ comment }) => {
 				<LikeButton type='comments' response={comment} />
 				<DislikeButton type='comments' response={comment} />
 				<ReplyBtn onClick={handleReplyForm} />
-				{showReplyForm && <ReplyForm comment={comment} onCancel={handleReplyForm} />}
+				{showReplyForm && (
+					<ReplyForm comment={comment} onCancel={handleReplyForm} setNewReply={setNewReply} />
+				)}
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
 				<Replies replies={replies} />
+				{newReply !== null && !showReplyForm && <SingleReply reply={newReply} />}
 			</Card.Footer>
 		</Card>
 	);

@@ -6,10 +6,12 @@ import { AUTH_HEADER } from '../../../../Helpers/requests.js';
 import ResponseForm from '../../../Common/ResponseForm/ResponseForm.jsx';
 import { fetchComments } from '../../Comments/CommentsSlice.js';
 
-const ReplyForm = ({ comment, onCancel }) => {
+const ReplyForm = ({ comment, onCancel, setNewReply }) => {
 	const dispatch = useDispatch();
+
 	const handleSubmit = async reply => {
-		await axios.post(addReplyPath, { body: reply, comment: comment.id }, AUTH_HEADER);
+		const res = await axios.post(addReplyPath, { body: reply, comment: comment.id }, AUTH_HEADER);
+		setNewReply(res.data);
 		dispatch(fetchComments());
 	};
 
