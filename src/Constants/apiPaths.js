@@ -6,7 +6,7 @@ export const addCommentPath = root + '/add_comment/',
 	tokenRefreshPath = root + '/auth/login/refresh/',
 	registerPath = root + '/auth/register/';
 
-export const allCommentsPath = videoID => `${root}/${videoID}/`;
+export const allCommentsPath = videoID => `${root}/get_comments/${videoID}/`;
 export const allRepliesPath = commentID => `view_replies/${commentID}/`;
 export const editCommentPath = commentID => `${root}/edit_comment/${commentID}/`;
 export const editReplyPath = replyID => `${root}/edit_reply/${replyID}/`;
