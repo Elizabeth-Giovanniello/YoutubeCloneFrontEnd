@@ -16,10 +16,7 @@ const OptionsMenu = (props) => {
             </Dropdown.Toggle>
             <Dropdown.Menu className="p-0">
                 <Dropdown.Item className="p-0">
-                    <p className="ps-3 m-0 pb-2 pt-2">
-                        <PencilFill className="text-danger me-3" size={18}/>
-                    Edit
-                    </p>
+                    
                 </Dropdown.Item>
                 <Dropdown.Item className="p-0">
                     <p className="ps-3 m-0 pb-2 pt-2">
