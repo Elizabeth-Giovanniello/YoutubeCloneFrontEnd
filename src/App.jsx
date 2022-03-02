@@ -25,7 +25,7 @@ function App() {
 
 		const videoId = localStorage.getItem('videoId');
 		dispatch(selectVideo(videoId));
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<div className='App'>

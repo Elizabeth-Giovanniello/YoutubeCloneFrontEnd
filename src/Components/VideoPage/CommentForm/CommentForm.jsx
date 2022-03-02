@@ -19,8 +19,13 @@ const CommentForm = props => {
 
 	const postComment = async e => {
 		e.preventDefault();
-		await axios.post(addCommentPath, addCommentReq(comment, user.user_id, videoId), AUTH_HEADER);
-		dispatch(fetchComments());
+		try {
+			await axios.post(addCommentPath, addCommentReq(comment, user.user_id, videoId), AUTH_HEADER);
+			setComment('');
+			dispatch(fetchComments());
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleFocus = () => {
