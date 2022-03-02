@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDislikePath, toggleLikePath } from '../../../Constants/apiPaths.js';
-import { AUTH_HEADER } from '../../../Helpers/requests.js';
-import SingleComment from '../SingleComment/SingleComment.jsx';
+
+import SingleComment from '../SingleComment/Comment/SingleComment.jsx';
 import { fetchComments } from './CommentsSlice.js';
 
 const Comments = props => {

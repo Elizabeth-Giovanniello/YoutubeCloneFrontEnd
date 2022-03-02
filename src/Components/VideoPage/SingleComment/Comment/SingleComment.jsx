@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Collapse, Button } from 'react-bootstrap';
-import { CaretDownFill, CaretUpFill } from 'react-bootstrap-icons';
-import { ThumbUpOffAlt, ThumbDownOffAlt, ThumbUpAlt, ThumbDownAlt } from '@mui/icons-material';
-import SingleReply from '../SingleReply/SingleReply';
+import React from 'react';
+import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { toggleLikePath } from '../../../Constants/apiPaths';
-import LikeButton from '../LikeButton/LikeButton';
-import DislikeButton from '../DislikeButton/DislikeButton';
+import LikeButton from '../../LikeButton/LikeButton';
+import DislikeButton from '../../DislikeButton/DislikeButton';
+import Replies from '../Replies/Replies.jsx';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
-
-	const [open, setOpen] = useState(false);
 
 	const ts = parseDateTime(comment.timestamp);
 
@@ -31,25 +26,9 @@ const SingleComment = ({ comment }) => {
 				<small className='text-muted'> REPLY</small>
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
-				<Button
-					variant='basic'
-					className='text-primary ps-0'
-					onClick={() => setOpen(!open)}
-					aria-controls='collapse-text'
-					aria-expanded={open}>
-					{open ? <CaretUpFill /> : <CaretDownFill />}
-					{open ? ' Hide' : ' View'} replies
-				</Button>
+				<Replies />
 			</Card.Footer>
-			<Card.Footer className='bg-white border-0'>
-				<Collapse in={open}>
-					<div id='collapse-text'>
-						{/* <SingleReply/>
-                <SingleReply/>
-                <SingleReply/> */}
-					</div>
-				</Collapse>
-			</Card.Footer>
+			<Card.Footer className='bg-white border-0'></Card.Footer>
 		</Card>
 	);
 };

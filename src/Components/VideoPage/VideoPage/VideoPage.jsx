@@ -6,7 +6,7 @@ import { HOME } from '../../../Constants/routes.js';
 import CommentForm from '../CommentForm/CommentForm.jsx';
 import Comments from '../Comments/Comments.jsx';
 import RelatedVideos from '../RelatedVideos/RelatedVideos/RelatedVideos.jsx';
-import SingleComment from '../SingleComment/SingleComment.jsx';
+import SingleComment from '../SingleComment/Comment/SingleComment.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import { fetchVideoData, getRelatedVideos, getSnippet } from './VideoSlice.js';
