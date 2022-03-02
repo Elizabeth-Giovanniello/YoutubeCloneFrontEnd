@@ -8,8 +8,8 @@ import { search } from '../Components/NavBar/SearchBar/SearchSlice.js';
 import { videoData } from '../Components/VideoPage/VideoPage/VideoSlice.js';
 import { home } from '../Components/Home/Home/HomeSlice.js';
 import { videoId } from '../Components/VideoPage/VideoPage/currentVideoSlice.js';
-import { relatedVideos } from '../Components/VideoPage/RelatedVideos/relatedVideosSlice.js';
 import { comments } from '../Components/VideoPage/Comments/CommentsSlice.js';
+import { relatedVideos } from '../Components/VideoPage/RelatedVideos/RelatedVideos/relatedVideosSlice.js';
 
 export const store = configureStore({
 	reducer: {

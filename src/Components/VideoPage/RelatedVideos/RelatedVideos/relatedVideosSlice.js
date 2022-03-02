@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { youtubeRelatedVideosPath } from '../../../Constants/youtubePaths.js';
+import { youtubeRelatedVideosPath } from '../../../../Constants/youtubePaths.js';
 
 const FETCH = 'relatedVideos/fetch';
 export const fetchRelatedVideos = createAsyncThunk(FETCH, async (_, thunkAPI) => {

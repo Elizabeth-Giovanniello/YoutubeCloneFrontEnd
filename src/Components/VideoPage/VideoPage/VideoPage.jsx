@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { HOME } from '../../../Constants/routes.js';
 import CommentForm from '../CommentForm/CommentForm.jsx';
 import Comments from '../Comments/Comments.jsx';
-import RelatedVideos from '../RelatedVideos/RelatedVideos.jsx';
+import RelatedVideos from '../RelatedVideos/RelatedVideos/RelatedVideos.jsx';
 import SingleComment from '../SingleComment/SingleComment.jsx';
 import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import VideoCardHorizontal from '../../Common/VideoCardHorizontal/VideoCardHorizontal.jsx';
+import RelatedVideoCard from '../RelatedVideoCard/RelatedVideoCard.jsx';
 import { fetchRelatedVideos } from './relatedVideosSlice.js';
 
 const RelatedVideos = props => {
@@ -15,7 +15,7 @@ const RelatedVideos = props => {
 	}, [videoId]);
 
 	const list = relatedVideos.map((video, i) =>
-		video?.snippet ? <VideoCardHorizontal key={video.id.videoId} video={video} /> : null,
+		video?.snippet ? <RelatedVideoCard key={video.id.videoId} video={video} /> : null,
 	);
 
 	return <div>{list}</div>;

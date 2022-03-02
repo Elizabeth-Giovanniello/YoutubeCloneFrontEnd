@@ -2,11 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { VIDEO } from '../../../Constants/routes';
-import './VideoCardHorizontal.css';
-import { selectVideo } from '../../VideoPage/VideoPage/currentVideoSlice.js';
+import { VIDEO } from '../../../../Constants/routes.js';
+import { selectVideo } from '../../VideoPage/currentVideoSlice.js';
 
-const VideoCardHorizontal = ({ video }) => {
+const RelatedVideoCard = ({ video }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -25,9 +24,8 @@ const VideoCardHorizontal = ({ video }) => {
 						</Col>
 						<Col xs={6} sm={7} md={8}>
 							<Card.Body>
-								<Card.Title>{video.snippet.title}</Card.Title>
+								<Card.Subtitle>{video.snippet.title}</Card.Subtitle>
 								<Card.Text>{video.snippet.channelTitle}</Card.Text>
-								<small>{video.snippet.description}</small>
 							</Card.Body>
 						</Col>
 					</Row>
@@ -37,4 +35,4 @@ const VideoCardHorizontal = ({ video }) => {
 	);
 };
 
-export default VideoCardHorizontal;
+export default RelatedVideoCard;

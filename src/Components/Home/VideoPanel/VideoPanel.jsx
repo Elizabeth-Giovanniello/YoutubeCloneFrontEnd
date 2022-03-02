@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Container } from 'react-bootstrap';
 
 import './VideoPanel.css';
-import VideoCard from '../../Common/VideoCard/VideoCard';
+import VideoCard from '../VideoCard/VideoCard';
 
 const VideoPanel = props => {
 	return (
@@ -10,7 +10,7 @@ const VideoPanel = props => {
 			<h3>{props.title}</h3>
 			<Row>
 				{props.videos.map(function (video) {
-					return <VideoCard video={video} key={video.id.videoId}/>;
+					return <VideoCard video={video} key={video.id.videoId} />;
 				})}
 			</Row>
 		</Container>
