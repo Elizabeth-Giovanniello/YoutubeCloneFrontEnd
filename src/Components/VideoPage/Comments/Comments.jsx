@@ -11,13 +11,11 @@ const Comments = props => {
 		dispatch(fetchComments());
 	}, [dispatch]);
 
-	return (
-		<div>
-			<SingleComment />
-			<SingleComment />
-			<SingleComment />
-		</div>
+	const allComments = comments.map((comment, i) =>
+		comment ? <SingleComment key={i} comment={comment} /> : null,
 	);
+
+	return <div>{allComments}</div>;
 };
 
 export default Comments;
