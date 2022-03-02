@@ -24,9 +24,9 @@ const SingleComment = props => {
 				<Card.Text>{props.comment.body}</Card.Text>
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
-				<LikeButton response={props.comment}/>
+				<LikeButton type="comments" response={props.comment}/>
 				<small className='text-muted'> {props.comment.likes.length} </small>
-				<DislikeButton response={props.comment}/>
+				<DislikeButton type="comments" response={props.comment}/>
 				<small className='text-muted'> REPLY</small>
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
