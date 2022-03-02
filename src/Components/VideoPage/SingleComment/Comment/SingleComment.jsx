@@ -6,6 +6,7 @@ import DislikeButton from '../../DislikeButton/DislikeButton';
 import Replies from '../Replies/Replies.jsx';
 import ReplyBtn from '../ReplyBtn/ReplyBtn.jsx';
 import ReplyForm from '../ReplyForm/ReplyForm.jsx';
+import { parseDateTime } from '../../../../Helpers/commentsReplies.js';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -30,10 +31,10 @@ const SingleComment = ({ comment }) => {
 			</Card.Body>
 			<Card.Footer className='bg-white border-0'>
 				<LikeButton type='comments' response={comment} />
-				<small className='text-muted'> {comment.likes.length} </small>
+
 				<DislikeButton type='comments' response={comment} />
 				<ReplyBtn onClick={handleReplyForm} />
-				{showReplyForm && <ReplyForm />}
+				{showReplyForm && <ReplyForm comment={comment} onCancel={handleReplyForm} />}
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
 				<Replies comment={comment} />
@@ -43,10 +44,3 @@ const SingleComment = ({ comment }) => {
 };
 
 export default SingleComment;
-
-function parseDateTime(timestamp) {
-	const dateTime = new Date(timestamp);
-	const date = dateTime.toLocaleDateString();
-	const time = dateTime.toLocaleTimeString();
-	return `${date} ${time}`;
-}

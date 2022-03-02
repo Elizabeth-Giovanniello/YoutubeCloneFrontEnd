@@ -6,7 +6,7 @@ import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
 
 const Replies = ({ comment }) => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 	const [replies, setReplies] = useState([]);
 
 	useEffect(() => {
@@ -24,7 +24,7 @@ const Replies = ({ comment }) => {
 		}
 	};
 
-	const repliesList = replies.map(reply => <SingleReply reply={reply} />);
+	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />);
 
 	return (
 		<>

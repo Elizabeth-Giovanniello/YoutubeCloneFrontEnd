@@ -1,47 +1,15 @@
-import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import axios from 'axios';
+import React from 'react';
+import { addReplyPath } from '../../../../Constants/apiPaths.js';
+import { AUTH_HEADER } from '../../../../Helpers/requests.js';
+import ResponseForm from '../../../Common/ResponseForm/ResponseForm.jsx';
 
-const ReplyForm = onCancel => {
-	// STATE
-	const { token } = useSelector(state => state.user);
-	const { videoId, user } = useSelector(state => state);
-
-	// LOCAL STATE
-	const [reply, setReply] = useState('');
-
-	// HANDLERS
-	const handleChange = e => {
-		setReply(e.target.value);
+const ReplyForm = ({ comment, onCancel }) => {
+	const handleSubmit = async reply => {
+		await axios.post(addReplyPath, { body: reply, comment: comment.id }, AUTH_HEADER);
 	};
 
-	return (
-		<div className='py-1'>
-			<form id='comment-form' onSubmit={() => {}}>
-				<div>
-					<TextField
-						fullWidth
-						autoComplete='off'
-						label='Add a comment...'
-						variant='standard'
-						value={reply}
-						onChange={handleChange}
-					/>
-				</div>
-				<div className='d-flex justify-content-between py-1'>
-					<div></div>
-					<div>
-						<Button onClick={onCancel} variant='text' className='ms-3'>
-							CANCEL
-						</Button>
-						<Button form='comment-form' type='submit' variant='contained' className='ms-3'>
-							COMMENT
-						</Button>
-					</div>
-				</div>
-			</form>
-		</div>
-	);
+	return <ResponseForm type='reply' onSubmit={handleSubmit} onCancel={onCancel} />;
 };
 
 export default ReplyForm;

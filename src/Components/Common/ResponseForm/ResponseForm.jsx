@@ -1,25 +1,23 @@
+import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 
+const ResponseForm = ({ type, onSubmit, onCancel, resBody = '' }) => {
+	const [response, setResponse] = useState(resBody);
 
-const ResponseForm = ({type, handleSubmit, setShowForm, response=""}) => {
-
-    const [response, setResponse] = useState(response);
-
-    const handleChange = e => {
+	const handleChange = e => {
 		setResponse(e.target.value);
 	};
 
-    const handleCancel = () => {
-		setShowForm(false);
+	const handleSubmit = e => {
+		e.preventDefault();
+		onSubmit(response);
+		setResponse('');
+		onCancel();
 	};
-    
-    const handleSubmit = () => {
-        handleSubmit();
-    }
 
-    return ( 
-        <div className='py-1'>
-			<form id={`${type}-form`} onSubmit={handleSubmit()}>
+	return (
+		<div className='py-1'>
+			<form id={`${type}-form`} onSubmit={handleSubmit}>
 				<div>
 					<TextField
 						fullWidth
@@ -33,7 +31,7 @@ const ResponseForm = ({type, handleSubmit, setShowForm, response=""}) => {
 				<div className='d-flex justify-content-between py-1'>
 					<div></div>
 					<div>
-						<Button onClick={handleCancel} variant='text' className='ms-3'>
+						<Button onClick={onCancel} variant='text' className='ms-3'>
 							CANCEL
 						</Button>
 						<Button form={`${type}-form`} type='submit' variant='contained' className='ms-3'>
@@ -43,9 +41,9 @@ const ResponseForm = ({type, handleSubmit, setShowForm, response=""}) => {
 				</div>
 			</form>
 		</div>
-     );
-}
- 
+	);
+};
+
 export default ResponseForm;
 
 //props that will need to be passed in: type={reply}, handleSubmit={handleSumbit}, setShowFomr={setShowReplyForm} response={reply.body}
