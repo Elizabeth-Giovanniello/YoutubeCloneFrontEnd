@@ -19,7 +19,7 @@ const DeleteResponse = (props) => {
     
 
     async function deleteResponse(responseID, responseBody, pathFunc){
-        
+
         let response = await axios.delete(pathFunc(responseID), {body: responseBody}, AUTH_HEADER)
         .then(response => { 
         console.log(response)
@@ -34,9 +34,8 @@ const DeleteResponse = (props) => {
     return ( 
         <>
             <p className="ps-3 m-0 pb-2 pt-2" onClick={handleShow}>
-                <TrashFill className="text-danger me-3" size={18}/>
-            Delete
-            </p>
+                <TrashFill className="me-1" size={18}/>
+            Delete</p>
             <Modal size="xs" centered show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>

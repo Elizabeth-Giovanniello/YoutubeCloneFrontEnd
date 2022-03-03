@@ -45,9 +45,8 @@ const SingleComment = ({ comment }) => {
 		replies.length !== 1 &&
 		!repliesOpen && <SingleReply reply={newReply} />;
 
-	return showEditForm ? (
-		<EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} />
-	) : (
+	return (
+		showEditForm ? <EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} /> : 
 		<Card className='border-0 mb-2'>
 			<Card.Header className='bg-white border-0'>
 				<strong>{comment.user.username} </strong>

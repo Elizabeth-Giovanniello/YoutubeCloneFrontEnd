@@ -2,17 +2,17 @@ import React from 'react';
 import ResponseForm from '../ResponseForm/ResponseForm';
 import { editCommentPath } from '../../../Constants/apiPaths';
 import { AUTH_HEADER } from '../../../Helpers/requests';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { fetchComments } from '../../VideoPage/Comments/CommentsSlice';
 
 const EditResponse = (props) => {
 
     const dispatch = useDispatch();
+    const {videoId} = useSelector(state => state)
 
     async function editResponse(responseID, responseBody, pathFunc){
-
-        let response = await axios.put(pathFunc(responseID), {body: responseBody}, AUTH_HEADER)
+        let response = await axios.put(pathFunc(responseID), {body: responseBody, video_id: videoId}, AUTH_HEADER)
         .then(response => { 
         console.log(response)
         dispatch(fetchComments());
@@ -23,7 +23,7 @@ const EditResponse = (props) => {
     }
 
     function onSubmit(response) {
-        editResponse(props.response.id, response.body, props.pathFunc);
+        editResponse(props.response.id, response, props.pathFunc);
     }
 
     function onCancel(){

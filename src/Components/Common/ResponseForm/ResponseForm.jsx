@@ -17,7 +17,7 @@ const ResponseForm = ({ type, onSubmit, onCancel, resBody = '', action="save" })
 
 	return (
 		<div className='py-1'>
-			<form id={`${type}-form`} onSubmit={handleSubmit}>
+			<form id={`${action}-${type}-form`} onSubmit={handleSubmit}>
 				<div>
 					<TextField
 						fullWidth
@@ -34,7 +34,7 @@ const ResponseForm = ({ type, onSubmit, onCancel, resBody = '', action="save" })
 						<Button onClick={onCancel} variant='text' className='ms-3'>
 							CANCEL
 						</Button>
-						<Button form={`${type}-form`} type='submit' variant='contained' className='ms-3'>
+						<Button form={`${action}-${type}-form`} type='submit' variant='contained' className='ms-3'>
 							{action.toUpperCase()}
 						</Button>
 					</div>
