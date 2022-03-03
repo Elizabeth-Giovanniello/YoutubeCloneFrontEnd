@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
-const truncateDesc = desc => desc.substring(0, 200);
+import { truncate } from '../../../Helpers/typography.js';
 
 const TitleBar = props => {
 	const { title, description, publishedAt, viewCount } = useSelector(state => state.videoData);
+	const [showDesc, setShowDesc] = useState(false);
+
+	const handleDesc = () => {
+		setShowDesc(!showDesc);
+	};
 
 	const views = parseInt(viewCount).toLocaleString();
 	const date = new Date(publishedAt).toDateString();
@@ -18,7 +22,10 @@ const TitleBar = props => {
 				</p>
 			</div>
 			<div className='border-bottom pt-3'>
-				<p>{truncateDesc(description)}</p>
+				<p>{showDesc ? description : truncate(description, 150)}</p>
+				<span onClick={handleDesc} className='clickable text-primary'>
+					{showDesc ? 'SHOW LESS' : 'SHOW MORE'}
+				</span>
 			</div>
 		</>
 	);
