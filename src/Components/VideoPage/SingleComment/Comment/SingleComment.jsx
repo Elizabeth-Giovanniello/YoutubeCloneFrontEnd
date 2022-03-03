@@ -74,7 +74,7 @@ const SingleComment = ({ comment }) => {
 					<ReplyForm comment={comment} onCancel={handleReplyForm} setNewReply={setNewReply} />
 				)}
 			</Card.Footer>
-			<Card.Footer className='bg-white border-0 pt-0'>
+			<Card.Footer className='bg-white border-0 p-0'>
 				<Replies open={repliesOpen} setOpen={setRepliesOpen} replies={replies} />
 				{singleReply}
 			</Card.Footer>

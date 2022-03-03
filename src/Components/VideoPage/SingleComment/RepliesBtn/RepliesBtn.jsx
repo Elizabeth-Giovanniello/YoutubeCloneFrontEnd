@@ -4,7 +4,7 @@ import './RepliesBtn.css';
 
 const RepliesBtn = ({ open, onClick }) => {
 	return (
-		<div className='text-primary ps-3 clickable replies-btn' onClick={onClick}>
+		<div className='text-primary clickable replies-btn' onClick={onClick}>
 			{open ? <CaretUpFill /> : <CaretDownFill />}
 			{open ? ' Hide' : ' View'} replies
 		</div>
