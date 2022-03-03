@@ -11,7 +11,7 @@ import { setSignUpError } from '../Components/SignUpModal/SignUpForm/SignUpFormS
 
 const setToken = (value = '') => window.localStorage.setItem('token', value);
 
-const DEFAULT_USER_STATE = { user_id: null, token: '' };
+const DEFAULT_USER_STATE = { user_id: null, token: '', username: 'username' };
 
 // THUNKS
 const SIGN_IN = 'user/signIn';
@@ -20,9 +20,10 @@ export const signIn = createAsyncThunk(SIGN_IN, async (formData, thunkAPI) => {
 		const response = await axios.post(loginPath, formData);
 		const token = response.data.access;
 		const user_id = jwtDecode(token).user_id;
+		const username = formData.username;
 
 		setToken(token);
-		thunkAPI.dispatch(setUser({ user_id, token }));
+		thunkAPI.dispatch(setUser({ user_id, token, username }));
 		thunkAPI.dispatch(closeSignIn());
 	} catch {
 		thunkAPI.dispatch(setError('Username or password is incorrect.'));
