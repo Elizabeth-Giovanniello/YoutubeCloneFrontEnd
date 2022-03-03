@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse } from 'react-bootstrap';
+import { Collapse, Container } from 'react-bootstrap';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
 
@@ -11,9 +11,11 @@ const Replies = ({ replies, open, setOpen }) => {
 	return (
 		<>
 			{replies.length > 0 && <RepliesBtn open={open} onClick={handleBtn} />}
-			<Collapse in={open}>
-				<div id='collapse-text'>{repliesList}</div>
-			</Collapse>
+			<Container>
+				<Collapse in={open}>
+					<div id='collapse-text'>{repliesList}</div>
+				</Collapse>
+			</Container>
 		</>
 	);
 };

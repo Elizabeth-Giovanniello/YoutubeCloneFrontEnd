@@ -13,11 +13,13 @@ const SingleReply = ({ reply }) => {
 	const ts = parseDateTime(reply.timestamp);
 
 	const [showEditForm, setShowEditForm] = useState(false);
+    const [isHighlighted, setIsHighlighted] = useState(false);
 
 	return showEditForm ? (
 		<EditResponse response={reply} pathFunc={editReplyPath} setShowEditForm={setShowEditForm} />
 	) : (
-		<Card className='border-0 mt-2'>
+		<Card className='border-0 mt-2' onMouseEnter={() => setIsHighlighted(true)}
+		onMouseLeave={() => setIsHighlighted(false)}>
 			<Card.Header className='bg-white border-0 p-0'>
 				<strong className='response-title'>{reply.user.username} </strong>
 				<small className='text-muted response-ts'>{ts}</small>
@@ -25,7 +27,7 @@ const SingleReply = ({ reply }) => {
 			<Card.Body className='p-0'>
 				<div className='d-flex justify-content-between'>
 					<div>{reply.body}</div>
-					{user_id === reply.user.id && (
+					{user_id === reply.user.id && isHighlighted && (
 						<OptionsMenu
 							pathFunc={editReplyPath}
 							type={'reply'}

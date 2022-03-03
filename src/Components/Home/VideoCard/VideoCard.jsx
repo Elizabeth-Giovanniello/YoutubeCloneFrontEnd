@@ -26,7 +26,7 @@ const VideoCard = ({ video }) => {
 					<Card.Img variant='top' src={thumbnails.high.url} />
 				</div>
 				<Card.Body>
-					<div className='hvc-title'>{truncate(title, 50)}</div>
+					<div className='hvc-title'>{truncate(title, 60)}</div>
 					<div className='hvc-channel'>{channelTitle}</div>
 					<div className='hvc-date'>{date}</div>
 				</Card.Body>

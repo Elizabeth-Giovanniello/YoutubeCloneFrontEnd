@@ -1,8 +1,12 @@
 .rvc-title {
-	font-size: small;
+	font-size: medium;
 	font-weight: 600;
 }
 
 .rvc-name {
+	font-size: small;
+}
+
+.rvc-date {
 	font-size: x-small;
 }

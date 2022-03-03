@@ -9,8 +9,9 @@ import './RelatedVideoCard.css';
 import { truncate } from '../../../../Helpers/typography.js';
 
 const RelatedVideoCard = ({ video }) => {
-	const { title, channelTitle, thumbnails } = video.snippet;
+	const { title, channelTitle, thumbnails, publishedAt } = video.snippet;
 
+	const date = new Date(publishedAt).toDateString();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -28,9 +29,10 @@ const RelatedVideoCard = ({ video }) => {
 							<Card.Img src={thumbnails.high.url} />
 						</Col>
 						<Col xs={6} sm={7} md={6}>
-							<Card.Body className='p-0 ps-1 pe-1'>
-								<div className='rvc-title'>{truncate(title, 50)}</div>
+							<Card.Body className='p-0 ps-2 pe-2 pt-1'>
+								<div className='rvc-title'>{truncate(title, 35)}</div>
 								<div className='rvc-name'>{channelTitle}</div>
+								<div className='rvc-date'>{date}</div>
 							</Card.Body>
 						</Col>
 					</Row>

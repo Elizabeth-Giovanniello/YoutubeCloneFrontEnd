@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import LikeButton from '../../LikeButton/LikeButton';
 import DislikeButton from '../../DislikeButton/DislikeButton';
