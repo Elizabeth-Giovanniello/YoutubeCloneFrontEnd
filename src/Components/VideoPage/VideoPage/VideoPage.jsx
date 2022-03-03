@@ -8,6 +8,8 @@ import TitleBar from '../TitleBar/TitleBar.jsx';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import { fetchVideoData } from './VideoSlice.js';
 
+import './VideoPage.css';
+
 const VideoPage = props => {
 	const dispatch = useDispatch();
 
@@ -23,13 +25,13 @@ const VideoPage = props => {
 		<>
 			<VideoPlayer fullscreen />
 			<Container>
-				<Row className='mt-3'>
+				<Row className='mt-3 vs-lower'>
 					<Col sm={12} md={7} lg={7}>
 						<TitleBar />
 						<CommentForm />
 						<Comments />
 					</Col>
-					<Col>
+					<Col lg={5}>
 						<RelatedVideos />
 					</Col>
 				</Row>
