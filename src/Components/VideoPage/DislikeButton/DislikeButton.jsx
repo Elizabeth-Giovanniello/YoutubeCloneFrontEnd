@@ -3,7 +3,7 @@ import { ThumbDownOffAlt, ThumbDownAlt } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDislikePath } from '../../../Constants/apiPaths';
 import axios from 'axios';
-import { AUTH_HEADER } from '../../../Helpers/requests';
+import { authHeader } from '../../../Helpers/requests';
 import { fetchComments } from '../Comments/CommentsSlice';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 
@@ -15,7 +15,7 @@ const DislikeButton = ({ type, response }) => {
 
 	async function toggleDislike() {
 		await axios
-			.put(toggleDislikePath(type, response.id), '', AUTH_HEADER)
+			.put(toggleDislikePath(type, response.id), '', authHeader())
 			.then(res => {
 				dispatch(fetchComments());
 			})

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addCommentPath } from '../../../Constants/apiPaths.js';
-import { addCommentReqBody, AUTH_HEADER } from '../../../Helpers/requests.js';
+import { addCommentReqBody, authHeader } from '../../../Helpers/requests.js';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 import { fetchComments } from '../Comments/CommentsSlice.js';
 
@@ -23,7 +23,7 @@ const CommentForm = props => {
 			await axios.post(
 				addCommentPath,
 				addCommentReqBody(comment, user.user_id, videoId),
-				AUTH_HEADER,
+				authHeader(),
 			);
 			setComment('');
 			setFocused(false);

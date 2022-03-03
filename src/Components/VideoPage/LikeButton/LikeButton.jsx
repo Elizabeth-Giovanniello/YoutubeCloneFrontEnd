@@ -2,7 +2,7 @@ import React from 'react';
 import { ThumbUpOffAlt, ThumbUpAlt } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleLikePath } from '../../../Constants/apiPaths';
-import { AUTH_HEADER } from '../../../Helpers/requests';
+import { authHeader } from '../../../Helpers/requests';
 import axios from 'axios';
 import { fetchComments } from '../Comments/CommentsSlice';
 import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
@@ -15,7 +15,7 @@ const LikeButton = ({ type, response }) => {
 
 	async function toggleLike() {
 		await axios
-			.put(toggleLikePath(type, response.id), '', AUTH_HEADER)
+			.put(toggleLikePath(type, response.id), '', authHeader())
 			.then(res => {
 				dispatch(fetchComments());
 			})
