@@ -13,7 +13,8 @@ const VideoPlayer = ({ fullscreen }) => {
 				title='title'
 				id='ytplayer'
 				type='text/html'
-				src={`https://www.youtube.com/embed/${videoId}?origin=http://example.com`}
+				allow="autoplay"
+				src={`https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1?origin=http://example.com`}
 				frameBorder='0'></iframe>
 		</div>
 	);

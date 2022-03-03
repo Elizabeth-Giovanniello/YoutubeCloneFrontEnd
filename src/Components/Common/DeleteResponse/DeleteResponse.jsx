@@ -33,9 +33,8 @@ const DeleteResponse = (props) => {
 
     return ( 
         <>
-            <p className="ps-3 m-0 pb-2 pt-2" onClick={handleShow}>
-                <TrashFill className="me-1" size={18}/>
-            Delete</p>
+            <p className="ps-4 m-0 pb-2 pt-2" onClick={handleShow}>
+                <TrashFill className="me-1" size={18}/>Delete</p>
             <Modal size="xs" centered show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>

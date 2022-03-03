@@ -17,7 +17,7 @@ const SearchResults = props => {
 	}, []);
 
 	return (
-		<Container>
+		<Container className="pt-5">
 			{results.map(function (video) {
 				return <SearchVideoCard key={video.id.videoId} video={video} />;
 			})}
