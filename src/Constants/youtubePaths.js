@@ -6,13 +6,14 @@ const ROOT = 'https://www.googleapis.com/youtube/v3/search';
 const apiHeader = '?key=' + YOUTUBE_API_KEY,
 	typeHeader = '&type=video',
 	partHeader = '&part=snippet',
-	maxResults = '&maxResults=';
+	maxResults = '&maxResults=',
+    languageHeader = '&relevanceLanguage=en';
 
 export const youtubeSearchPath = searchTerm =>
-	`${ROOT}${apiHeader}${typeHeader}&q=${searchTerm}${partHeader}${maxResults}${MAX_RESULTS}`;
+	`${ROOT}${apiHeader}${typeHeader}&q=${searchTerm}${partHeader}${languageHeader}${maxResults}${MAX_RESULTS}`;
 
 export const youtubeRelatedVideosPath = videoID =>
-	`${ROOT}${apiHeader}&relatedToVideoId=${videoID}${typeHeader}${partHeader}${maxResults}${MAX_RESULTS}`;
+	`${ROOT}${apiHeader}&relatedToVideoId=${videoID}${typeHeader}${partHeader}${languageHeader}${maxResults}${MAX_RESULTS}`;
 
 export const youtubeVideoSnippetPath = videoID =>
 	`https://www.googleapis.com/youtube/v3/videos${apiHeader}&id=${videoID}&part=snippet&part=statistics`;
