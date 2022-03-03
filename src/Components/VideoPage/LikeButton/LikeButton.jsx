@@ -5,10 +5,13 @@ import { toggleLikePath } from '../../../Constants/apiPaths';
 import { AUTH_HEADER } from '../../../Helpers/requests';
 import axios from 'axios';
 import { fetchComments } from '../Comments/CommentsSlice';
+import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 
 const LikeButton = ({ type, response }) => {
 	const { user_id } = useSelector(state => state.user);
 	const dispatch = useDispatch();
+
+	const handleClick = () => (!user_id ? dispatch(showSignIn()) : toggleLike());
 
 	async function toggleLike() {
 		await axios
@@ -24,7 +27,7 @@ const LikeButton = ({ type, response }) => {
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
 		<>
-			<span variant='basic' className='clickable btn' onClick={() => toggleLike()}>
+			<span variant='basic' className='clickable btn' onClick={handleClick}>
 				{response.likes
 					.map(function (like) {
 						return like.user;

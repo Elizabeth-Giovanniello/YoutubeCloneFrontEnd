@@ -5,10 +5,13 @@ import { toggleDislikePath } from '../../../Constants/apiPaths';
 import axios from 'axios';
 import { AUTH_HEADER } from '../../../Helpers/requests';
 import { fetchComments } from '../Comments/CommentsSlice';
+import { showSignIn } from '../../SignInModal/SignInModal/SignInModalSlice.js';
 
 const DislikeButton = ({ type, response }) => {
 	const user_id = useSelector(state => state.user.user_id);
 	const dispatch = useDispatch();
+
+	const handleClick = () => (!user_id ? dispatch(showSignIn()) : toggleDislike());
 
 	async function toggleDislike() {
 		await axios
@@ -23,7 +26,7 @@ const DislikeButton = ({ type, response }) => {
 
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
-		<span className='clickable btn' variant='basic' onClick={() => toggleDislike()}>
+		<span className='clickable btn' variant='basic' onClick={handleClick}>
 			{response.dislikes
 				.map(function (like) {
 					return like.user;
