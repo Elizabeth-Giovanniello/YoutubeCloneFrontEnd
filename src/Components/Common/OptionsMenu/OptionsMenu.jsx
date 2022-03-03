@@ -19,7 +19,7 @@ const OptionsMenu = ({ type, pathFunc, response, setShowEditForm }) => {
 			<Dropdown.Menu className='p-0'>
 				<Dropdown.Item className='p-0' onClick={()=> setShowEditForm(true)}>
 					<p className='ps-3 m-0 pb-2 pt-2'>
-						<PencilFill className='text-danger me-3' size={18} />
+						<PencilFill className='me-1' size={18} />
 						Edit
 					</p>
 				</Dropdown.Item>
