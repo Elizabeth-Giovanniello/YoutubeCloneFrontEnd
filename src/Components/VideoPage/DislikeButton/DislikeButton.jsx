@@ -26,7 +26,7 @@ const DislikeButton = ({ type, response }) => {
 
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
-		<span className='clickable btn p-0 ms-2' variant='basic' onClick={handleClick}>
+		<span className='clickable btn p-0 ms-3' variant='basic' onClick={handleClick}>
 			{response.dislikes
 				.map(function (like) {
 					return like.user;
