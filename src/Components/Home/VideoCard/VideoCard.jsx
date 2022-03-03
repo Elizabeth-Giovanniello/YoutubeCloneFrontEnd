@@ -8,7 +8,9 @@ import { selectVideo } from '../../VideoPage/VideoPage/currentVideoSlice.js';
 import { truncate } from '../../../Helpers/typography.js';
 
 const VideoCard = ({ video }) => {
-	const { title, channelTitle, thumbnails } = video.snippet;
+
+	const { title, channelTitle, thumbnails, publishedAt } = video.snippet;
+	const date = new Date(publishedAt).toDateString();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -26,6 +28,7 @@ const VideoCard = ({ video }) => {
 				<Card.Body>
 					<div className='hvc-title'>{truncate(title, 50)}</div>
 					<div className='hvc-channel'>{channelTitle}</div>
+					<div className='hvc-date'>{date}</div>
 				</Card.Body>
 			</Card>
 		</Col>

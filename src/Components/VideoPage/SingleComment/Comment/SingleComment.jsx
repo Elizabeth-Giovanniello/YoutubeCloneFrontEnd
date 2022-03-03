@@ -24,6 +24,7 @@ const SingleComment = ({ comment }) => {
 	const [newReply, setNewReply] = useState(null);
 	const [showEditForm, setShowEditForm] = useState(false);
 	const [repliesOpen, setRepliesOpen] = useState(false);
+	const [isHighlighted, setIsHighlighted] = useState(false);
 
 	useEffect(() => {
 		fetchReplies();
@@ -48,7 +49,8 @@ const SingleComment = ({ comment }) => {
 	return showEditForm ? (
 		<EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} />
 	) : (
-		<Card className='border-0 mb-2'>
+		<Card className='border-0 mb-2' onMouseEnter={() => setIsHighlighted(true)}
+		onMouseLeave={() => setIsHighlighted(false)}>
 			<Card.Header className='bg-white border-0 p-0'>
 				<strong className='response-title'>{comment.user.username} </strong>
 				<small className='text-muted response-ts'>{ts}</small>
@@ -56,7 +58,7 @@ const SingleComment = ({ comment }) => {
 			<Card.Body className='p-0'>
 				<div className='d-flex justify-content-between'>
 					<div>{comment.body}</div>
-					{user_id === comment.user.id && (
+					{user_id === comment.user.id && isHighlighted && (
 						<OptionsMenu
 							pathFunc={editCommentPath}
 							type={'comment'}

@@ -7,17 +7,25 @@
 }
 
 .svc-title {
-	font-size: medium;
+	font-size: large;
 	font-weight: 600;
-	padding-bottom: 0.4rem;
+	padding-bottom: 0;
 }
 
 .svc-channel {
-	font-size: small;
+	font-size: medium;
 	font-weight: 500;
 	padding-bottom: 0.4rem;
+	color: rgb(100, 99, 99);
 }
 
 .svc-desc {
 	font-size: small;
+	color: rgb(100, 99, 99);
+}
+
+.svc-date {
+	font-size: small;
+	padding-bottom: 0.4rem;
+	color: rgb(100, 99, 99);
 }

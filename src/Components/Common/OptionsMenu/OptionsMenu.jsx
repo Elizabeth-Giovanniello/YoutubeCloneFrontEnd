@@ -6,15 +6,12 @@ import DeleteResponse from '../DeleteResponse/DeleteResponse';
 import './OptionsMenu.css';
 
 const OptionsMenu = ({ type, pathFunc, response, setShowEditForm }) => {
-	const [isHighlighted, setIsHighlighted] = useState(false);
 
 	return (
 		<Dropdown>
 			<Dropdown.Toggle variant='basic' className='float-end p-0'>
 				<ThreeDotsVertical
-					className={'p-0' + (isHighlighted ? ' text-danger' : ' text-secondary')}
-					onMouseEnter={() => setIsHighlighted(true)}
-					onMouseLeave={() => setIsHighlighted(false)}></ThreeDotsVertical>
+					className='p-1 text-secondary' size={28}></ThreeDotsVertical>
 			</Dropdown.Toggle>
 			<Dropdown.Menu className='p-0'>
 				<Dropdown.Item className='p-0' onClick={()=> setShowEditForm(true)}>

@@ -14,7 +14,6 @@ const LogoutButton = ({ variant = 'outlined' }) => {
 	const dispatch = useDispatch();
 
 	const handleClick = () => dispatch(clearUser());
-	console.log(`user: ${username}`)
 
 	return (
 		<>
