@@ -3,9 +3,7 @@ import { Collapse } from 'react-bootstrap';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
 
-const Replies = ({ replies }) => {
-	const [open, setOpen] = useState(false);
-
+const Replies = ({ replies, open, setOpen }) => {
 	const handleBtn = async () => setOpen(!open);
 
 	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />);

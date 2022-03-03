@@ -23,6 +23,7 @@ const SingleComment = ({ comment }) => {
 	const [replies, setReplies] = useState([]);
 	const [newReply, setNewReply] = useState(null);
 	const [showEditForm, setShowEditForm] = useState(false);
+	const [repliesOpen, setRepliesOpen] = useState(false);
 
 	useEffect(() => {
 		fetchReplies();
@@ -39,12 +40,14 @@ const SingleComment = ({ comment }) => {
 
 	const ts = parseDateTime(comment.timestamp);
 
-	const singleReply = newReply !== null && !showReplyForm && replies.length !== 1 && (
-		<SingleReply reply={newReply} />
-	);
+	const singleReply = newReply !== null &&
+		!showReplyForm &&
+		replies.length !== 1 &&
+		!repliesOpen && <SingleReply reply={newReply} />;
 
-	return (
-		showEditForm ? <EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm}/> :
+	return showEditForm ? (
+		<EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} />
+	) : (
 		<Card className='border-0'>
 			<Card.Header className='bg-white border-0'>
 				<strong>{comment.user.username} </strong>
@@ -54,7 +57,12 @@ const SingleComment = ({ comment }) => {
 				<div className='d-flex justify-content-between'>
 					<Card.Text>{comment.body}</Card.Text>
 					{user_id === comment.user.id && (
-						<OptionsMenu pathFunc={editCommentPath} type={'comment'} response={comment} setShowEditForm={setShowEditForm}/>
+						<OptionsMenu
+							pathFunc={editCommentPath}
+							type={'comment'}
+							response={comment}
+							setShowEditForm={setShowEditForm}
+						/>
 					)}
 				</div>
 			</Card.Body>
@@ -67,7 +75,7 @@ const SingleComment = ({ comment }) => {
 				)}
 			</Card.Footer>
 			<Card.Footer className='bg-white border-0 pt-0'>
-				<Replies replies={replies} />
+				<Replies open={repliesOpen} setOpen={setRepliesOpen} replies={replies} />
 				{singleReply}
 			</Card.Footer>
 		</Card>
