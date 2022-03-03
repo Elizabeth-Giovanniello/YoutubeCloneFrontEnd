@@ -18,12 +18,12 @@ const DeleteResponse = (props) => {
     const dispatch = useDispatch();
     
 
-    async function deleteResponse(responseID, responseBody, pathFunc){
-
-        let response = await axios.delete(pathFunc(responseID), {body: responseBody}, AUTH_HEADER)
+    async function deleteResponse(responseID, pathFunc){
+        let response = await axios.delete(pathFunc(responseID), AUTH_HEADER)
         .then(response => { 
         console.log(response)
         dispatch(fetchComments());
+        handleClose();
         })
         .catch(error => {
             console.log(error.response)
@@ -46,7 +46,7 @@ const DeleteResponse = (props) => {
                     Delete your {props.type} permanently?
                 </Modal.Body>
                 <Modal.Footer>
-                        <Button onClick={()=>{deleteResponse(props.response.id, props.response.body, props.pathFunc)}}>Delete</Button>
+                        <Button onClick={()=>{deleteResponse(props.response.id, props.pathFunc)}}>Delete</Button>
                         <Button onClick={handleClose}>Cancel</Button>
                 </Modal.Footer>
             </Modal>
