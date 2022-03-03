@@ -26,12 +26,12 @@ const VideoPage = props => {
 			<VideoPlayer fullscreen />
 			<Container>
 				<Row className='mt-3 vs-lower'>
-					<Col sm={12} md={7} lg={7}>
+					<Col sm={12} md={7} lg={8} xl={9}>
 						<TitleBar />
 						<CommentForm />
 						<Comments />
 					</Col>
-					<Col lg={5}>
+					<Col md={5} lg={4} xl={3}>
 						<RelatedVideos />
 					</Col>
 				</Row>
