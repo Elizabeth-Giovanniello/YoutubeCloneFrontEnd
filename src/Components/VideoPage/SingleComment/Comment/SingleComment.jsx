@@ -48,14 +48,14 @@ const SingleComment = ({ comment }) => {
 	return showEditForm ? (
 		<EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} />
 	) : (
-		<Card className='border-0'>
+		<Card className='border-0 mb-2'>
 			<Card.Header className='bg-white border-0'>
 				<strong>{comment.user.username} </strong>
 				<small className='text-muted'>{ts}</small>
 			</Card.Header>
 			<Card.Body className='pb-1 pt-0'>
 				<div className='d-flex justify-content-between'>
-					<Card.Text>{comment.body}</Card.Text>
+					<div>{comment.body}</div>
 					{user_id === comment.user.id && (
 						<OptionsMenu
 							pathFunc={editCommentPath}
@@ -66,7 +66,7 @@ const SingleComment = ({ comment }) => {
 					)}
 				</div>
 			</Card.Body>
-			<Card.Footer className='bg-white border-0'>
+			<Card.Footer className='bg-white border-0 p-0'>
 				<LikeButton type='comments' response={comment} />
 				<DislikeButton type='comments' response={comment} />
 				<ReplyBtn onClick={handleReplyForm} />
