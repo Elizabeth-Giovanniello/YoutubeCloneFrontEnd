@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Collapse } from 'react-bootstrap';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import RepliesBtn from '../RepliesBtn/RepliesBtn.jsx';
@@ -8,15 +8,12 @@ const Replies = ({ replies, open, setOpen }) => {
 
 	const repliesList = replies.map((reply, i) => <SingleReply key={i} reply={reply} />);
 
-	const singleReply = replies.length === 1 && repliesList[0];
-
 	return (
 		<>
-			{replies.length > 1 && <RepliesBtn open={open} onClick={handleBtn} />}
+			<RepliesBtn open={open} onClick={handleBtn} />
 			<Collapse in={open}>
 				<div id='collapse-text'>{repliesList}</div>
 			</Collapse>
-			{singleReply}
 		</>
 	);
 };

@@ -16,9 +16,9 @@ const ReplyBtn = ({ onClick }) => {
 	};
 
 	return (
-		<small onClick={handleClick} className='text-muted clickable btn'>
+		<div onClick={handleClick} className='text-muted clickable btn p-0 ms-2'>
 			REPLY
-		</small>
+		</div>
 	);
 };
 

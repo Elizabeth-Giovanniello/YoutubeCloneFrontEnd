@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LikeButton from '../../LikeButton/LikeButton';
 import DislikeButton from '../../DislikeButton/DislikeButton';
 import Replies from '../Replies/Replies.jsx';
@@ -11,8 +11,8 @@ import { allRepliesPath, editCommentPath } from '../../../../Constants/apiPaths.
 import axios from 'axios';
 import SingleReply from '../../SingleReply/SingleReply.jsx';
 import OptionsMenu from '../../../Common/OptionsMenu/OptionsMenu';
-import ResponseForm from '../../../Common/ResponseForm/ResponseForm';
 import EditResponse from '../../../Common/EditResponse/EditResponse';
+import './Comment.css';
 
 const SingleComment = ({ comment }) => {
 	const user_id = useSelector(state => state.user.user_id);
@@ -45,14 +45,15 @@ const SingleComment = ({ comment }) => {
 		replies.length !== 1 &&
 		!repliesOpen && <SingleReply reply={newReply} />;
 
-	return (
-		showEditForm ? <EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} /> : 
+	return showEditForm ? (
+		<EditResponse response={comment} pathFunc={editCommentPath} setShowEditForm={setShowEditForm} />
+	) : (
 		<Card className='border-0 mb-2'>
-			<Card.Header className='bg-white border-0'>
-				<strong>{comment.user.username} </strong>
-				<small className='text-muted'>{ts}</small>
+			<Card.Header className='bg-white border-0 p-0'>
+				<strong className='response-title'>{comment.user.username} </strong>
+				<small className='text-muted response-ts'>{ts}</small>
 			</Card.Header>
-			<Card.Body className='pb-1 pt-0'>
+			<Card.Body className='p-0'>
 				<div className='d-flex justify-content-between'>
 					<div>{comment.body}</div>
 					{user_id === comment.user.id && (

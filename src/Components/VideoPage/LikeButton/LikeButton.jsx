@@ -27,7 +27,7 @@ const LikeButton = ({ type, response }) => {
 	return (
 		//button checks to see if the user has liked the response, and changes the button fill accordingly
 		<>
-			<span variant='basic' className='clickable btn' onClick={handleClick}>
+			<span variant='basic' className='clickable btn p-0' onClick={handleClick}>
 				{response.likes
 					.map(function (like) {
 						return like.user;
