@@ -5,3 +5,11 @@
 	margin: -10% 0 !important;
 	width: 100% !important;
 }
+
+.hvc-title {
+	font-weight: 600;
+}
+
+.hvc-channel {
+	font-size: small;
+}

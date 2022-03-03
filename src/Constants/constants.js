@@ -1,1 +1,1 @@
-export const MAX_RESULTS = 25;
+export const MAX_RESULTS = 15;
