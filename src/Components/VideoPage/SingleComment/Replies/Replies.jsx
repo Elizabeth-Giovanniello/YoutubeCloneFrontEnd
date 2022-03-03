@@ -10,7 +10,7 @@ const Replies = ({ replies, open, setOpen }) => {
 
 	return (
 		<>
-			<RepliesBtn open={open} onClick={handleBtn} />
+			{replies.length > 0 && <RepliesBtn open={open} onClick={handleBtn} />}
 			<Collapse in={open}>
 				<div id='collapse-text'>{repliesList}</div>
 			</Collapse>
