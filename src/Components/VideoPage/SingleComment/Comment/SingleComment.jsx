@@ -69,7 +69,7 @@ const SingleComment = ({ comment }) => {
 			<Card.Footer className='bg-white border-0 p-0'>
 				<LikeButton type='comments' response={comment} />
 				<DislikeButton type='comments' response={comment} />
-				<ReplyBtn onClick={handleReplyForm} />
+				{replies.length > 0 && <ReplyBtn onClick={handleReplyForm} />}
 				{showReplyForm && (
 					<ReplyForm comment={comment} onCancel={handleReplyForm} setNewReply={setNewReply} />
 				)}
