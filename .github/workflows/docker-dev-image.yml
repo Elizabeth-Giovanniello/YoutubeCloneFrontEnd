@@ -16,7 +16,7 @@ jobs:
         run: docker-compose -f "docker-compose-dev.yml" up -d --build
 
       - name: Bump version and push tag
-        uses: TriPSs/conventional-changelog-action@master
+        uses: TriPSs/conventional-changelog-action@v3
         with:
           # github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
           git-message: 'chore(release): {version}'
