@@ -18,12 +18,11 @@ jobs:
       - name: Bump version and push tag
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          # github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+          github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
           git-message: 'chore(release): {version}'
           preset: 'angular'
-          tag-prefix: ''
+          tag-prefix: 'v'
           output-file: 'CHANGELOG.md'
-          version-file: ./package.json
 
       - name: Create a Release
         uses: actions/create-release@v1
