@@ -1,0 +1,42 @@
+name: Docker Dev Image CI
+
+on: 
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Docker Compose on Dev Files
+        run: docker-compose -f "docker-compose-dev.yml" up -d --build
+
+      - name: Bump version and push tag
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          # github-token: ${{ secrets.GITHUB_TOKEN_ACTION }}
+          git-message: 'chore(release): {version}'
+          preset: 'angular'
+          tag-prefix: ''
+          output-file: 'CHANGELOG.md'
+
+      - name: Create a Release
+        uses: actions/create-release@v1
+        with: 
+          draft: false
+          prerelease: false
+          release_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
+
+      
+
+
+      
