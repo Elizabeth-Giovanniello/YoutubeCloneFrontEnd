@@ -1,0 +1,16 @@
+name: auto release on tag
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: new release
+      uses: ncipollo/release-action@v1
+      with:
+        token: ${{ secrets.TOKEN_ACTION }}
