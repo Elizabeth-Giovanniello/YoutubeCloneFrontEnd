@@ -26,5 +26,5 @@ jobs:
           git push
           git push --tags
 
-      - name: get new tag
-        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+      # - name: get new tag
+      #   uses: 'WyriHaximus/github-action-get-previous-tag@v1'
