@@ -1,4 +1,4 @@
-const root = 'http://127.0.0.1:8000';
+const root = 'http://0.0.0.0:8000';
 
 export const addCommentPath = root + '/add_comment/',
 	addReplyPath = root + '/add_reply/',
