@@ -1,8 +1,8 @@
 name: Docker Dev Image CI
 
 on:
-  # pull_request:
-  #   branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -11,21 +11,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-      # - name: Auto-merge
-      #   uses: reitermarkus/automerge@v1.5.2
+      - name: Auto-merge
+        uses: reitermarkus/automerge@v1.5.2
 
-      # - name: Bump version number
-      #   run: |
-      #     git config --global user.email "ea.giovanniello@gmail.com"
-      #     git config --global user.name "Elizabeth Giovanniello"
-      #     git pull
-      #     npm version patch
-      #     git push
-      #     git push --tags
+      - name: Bump version number
+        run: |
+          git config --global user.email "ea.giovanniello@gmail.com"
+          git config --global user.name "Elizabeth Giovanniello"
+          git pull origin devOps
+          git checkout devOps
+          npm version patch
+          git push -u origin devOps
+          git push --tags
 
       # - name: get new tag
       #   uses: 'WyriHaximus/github-action-get-previous-tag@v1'
-
-      # - name: new release
-      #   uses: ncipollo/release-action@v1
