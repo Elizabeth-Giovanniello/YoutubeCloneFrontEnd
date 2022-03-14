@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  front:
+    container_name: front
+    image: ytc-front
+    ports:
+      - '8080:80'
+    depends_on:
+      - back
+
+  back:
+    container_name: back
+    image: ytc-back
+    ports:
+      - '8000:8000'
+    depends_on:
+      - migrate
+
+  migrate:
+    container_name: migrate
+    image: ytc-back
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_ROOT_PASSWORD=example
+    command: [sh, -cx, 'python ./backend_apps/manage.py migrate']
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    restart: unless-stopped
+    image: mysql
+    volumes:
+      - db_volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: db
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  db_volume:

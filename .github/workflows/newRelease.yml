@@ -2,8 +2,7 @@ name: auto release on tag
 
 on:
   push:
-    tags:
-      - '*'
+    tags: v*
 
 jobs:
   release:
@@ -11,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: new release
         uses: ncipollo/release-action@v1
