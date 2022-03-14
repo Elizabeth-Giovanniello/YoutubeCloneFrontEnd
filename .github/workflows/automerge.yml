@@ -26,6 +26,3 @@ jobs:
           npm version patch
           git push -u origin devOps
           git push --tags
-
-      # - name: get new tag
-      #   uses: 'WyriHaximus/github-action-get-previous-tag@v1'
