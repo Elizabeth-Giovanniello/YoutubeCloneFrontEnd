@@ -9,10 +9,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: new release
-      uses: ncipollo/release-action@v1
-      with:
-        token: ${{ secrets.TOKEN_ACTION }}
+      - name: new release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.TOKEN_ACTION }}
