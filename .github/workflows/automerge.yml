@@ -32,4 +32,4 @@ jobs:
       - name: new release
         uses: ncipollo/release-action@v1
         with:
-          token: ${{ secrets.TOKEN_ID }}
+          token: ${{ secrets.TOKEN_ACTION }}
