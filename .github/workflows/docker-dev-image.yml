@@ -28,4 +28,4 @@ jobs:
         uses: 'WyriHaximus/github-action-get-previous-tag@v1'
 
       - name: new release
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
