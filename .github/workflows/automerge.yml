@@ -21,7 +21,7 @@ jobs:
         run: |
           git config --global user.email "ea.giovanniello@gmail.com"
           git config --global user.name "Elizabeth Giovanniello"
-          git pull
+          git pull origin devOps
           npm version patch
           git push
           git push --tags
