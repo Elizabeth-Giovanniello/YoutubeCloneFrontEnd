@@ -21,6 +21,7 @@ jobs:
               git config --global user.name "Elizabeth Giovanniello"
               npm version patch
               git push --tags
+              git update-ref
 
 
       # - name: Run Docker Compose on Dev Files
