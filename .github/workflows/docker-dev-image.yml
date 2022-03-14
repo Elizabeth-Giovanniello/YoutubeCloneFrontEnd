@@ -19,7 +19,7 @@ jobs:
         run: |
               git config --global user.email "ea.giovanniello@gmail.com"
               git config --global user.name "Elizabeth Giovanniello"
-              npm version patch -m "[RELEASE] %s"
+              npm version patch
               git push
 
 
