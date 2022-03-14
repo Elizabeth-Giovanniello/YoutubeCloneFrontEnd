@@ -12,11 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run Docker Compose on Dev Files
-        run: docker-compose -f "docker-compose-dev.yml" up -d --build
+      - name: Auto-merge 
+        uses: reitermarkus/automerge@v1.5.2
 
-      - name: Bump version and push tag
-        uses: TriPSs/conventional-changelog-action@v3
+      - name: Bump version number
+        run: |
+              git config --global user.email "ea.giovanniello@gmail.com"
+              git config --global user.name "Elizabeth Giovanniello"
+              npm version patch
+
+
+      # - name: Run Docker Compose on Dev Files
+      #   run: docker-compose -f "docker-compose-dev.yml" up -d --build
+
+      # - name: Bump version and push tag
+      #   uses: TriPSs/conventional-changelog-action@v3
 
       # - name: version
       #   run: npm version patch -m "[RELEASE] %s"
